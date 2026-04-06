@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cowork for Closers — The Real Estate AI Prompt Library & Command Center</title>
+<meta name="description" content="55 copy-paste-ready AI prompts for real estate professionals. Built on Claude Cowork. The companion app for the book.">
+<meta property="og:title" content="Cowork for Closers — Real Estate AI Prompt Library">
+<meta property="og:description" content="55 production-ready AI prompts for listings, transactions, marketing, and more.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#1C1C1E;--charcoal-light:#2C2C2E;--charcoal-mid:#3A3A3C;
+  --warm-white:#FAF8F5;--off-white:#F2EFEB;--cream:#E8E4DF;
+  --teal:#0ABAB5;--teal-dark:#089A96;--teal-light:#0DD5CF;--teal-bg:rgba(10,186,181,0.08);
+  --gold:#C9A961;--gold-dark:#B8943F;--gold-light:#D4BA7A;--gold-bg:rgba(201,169,97,0.1);
+  --green:#34C759;--blue:#007AFF;--red:#FF3B30;--orange:#FF9500;--purple:#AF52DE;
+  --shadow-sm:0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl:0 16px 48px rgba(0,0,0,0.16);
+  --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;
+  --transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--warm-white);color:var(--charcoal);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none;transition:var(--transition)}
+a:hover{color:var(--teal-dark)}
+
+/* ========== HEADER ========== */
+.site-header{background:var(--charcoal);color:#fff;padding:0;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-lg)}
+.header-top{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--charcoal-light)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff}
+.logo-text h1{font-size:18px;font-weight:700;letter-spacing:-0.3px;line-height:1.2}
+.logo-text span{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.header-badge{background:var(--gold-bg);border:1px solid var(--gold);color:var(--gold);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase}
+
+/* ========== TAB NAV ========== */
+.tab-nav{display:flex;gap:2px;padding:0 32px;background:var(--charcoal);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{padding:12px 20px;color:rgba(255,255,255,0.55);font-size:13px;font-weight:500;border:none;background:none;cursor:pointer;transition:var(--transition);white-space:nowrap;position:relative;letter-spacing:0.2px}
+.tab-btn:hover{color:rgba(255,255,255,0.85)}
+.tab-btn.active{color:#fff;font-weight:600}
+.tab-btn.active::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:var(--teal);border-radius:2px 2px 0 0}
+
+/* ========== MAIN CONTENT ========== */
+.main-content{max-width:1200px;margin:0 auto;padding:32px 24px 100px}
+.tab-panel{display:none;animation:fadeIn 0.3s ease}
+.tab-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ========== TAB 1: PROMPT LIBRARY ========== */
+.library-header{margin-bottom:28px}
+.library-header h2{font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:4px}
+.library-header p{color:#666;font-size:15px}
+.search-container{position:relative;margin-bottom:20px}
+.search-input{width:100%;padding:14px 20px 14px 48px;border:2px solid var(--cream);border-radius:var(--radius-md);font-size:15px;font-family:inherit;background:#fff;transition:var(--transition);color:var(--charcoal)}
+.search-input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-bg)}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#999;font-size:18px}
+.prompt-count{font-size:13px;color:#888;margin-top:8px;font-weight:500}
+
+/* Filter Chips */
+.filter-section{margin-bottom:24px}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.filter-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:#888;min-width:80px}
+.chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:var(--transition);border:1.5px solid var(--cream);background:#fff;color:#666;user-select:none}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.chip.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip.diff-beginner.active{background:var(--green);border-color:var(--green)}
+.chip.diff-intermediate.active{background:var(--blue);border-color:var(--blue)}
+.chip.diff-advanced.active{background:var(--gold);border-color:var(--gold)}
+
+/* Prompt Cards */
+.prompt-grid{display:flex;flex-direction:column;gap:12px}
+.prompt-card{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-md);overflow:hidden;transition:var(--transition);cursor:pointer}
+.prompt-card:hover{border-color:var(--teal);box-shadow:var(--shadow-md)}
+.prompt-card.expanded{border-color:var(--teal);box-shadow:var(--shadow-lg)}
+.prompt-card-header{padding:16px 20px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.prompt-card-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.prompt-number{width:32px;height:32px;border-radius:50%;background:var(--teal-bg);color:var(--teal);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prompt-title{font-size:15px;font-weight:600;color:var(--charcoal);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prompt-tags{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.tag{padding:3px 10px;border-radius:12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.tag-beginner{background:rgba(52,199,89,0.1);color:var(--green)}
+.tag-intermediate{background:rgba(0,122,255,0.1);color:var(--blue)}
+.tag-advanced{background:var(--gold-bg);color:var(--gold-dark)}
+.tag-capture{background:rgba(175,82,222,0.1);color:var(--purple)}
+.tag-load{background:rgba(255,149,0,0.1);color:var(--orange)}
+.tag-orchestrate{background:rgba(10,186,181,0.1);color:var(--teal-dark)}
+.tag-steer{background:rgba(255,59,48,0.1);color:var(--red)}
+.tag-extract{background:rgba(52,199,89,0.1);color:#28a745}
+.tag-category{background:var(--charcoal);color:#fff}
+.expand-icon{color:#ccc;transition:var(--transition);font-size:18px;flex-shrink:0}
+.prompt-card.expanded .expand-icon{transform:rotate(180deg);color:var(--teal)}
+
+/* Prompt Body */
+.prompt-body{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1)}
+.prompt-card.expanded .prompt-body{max-height:2000px}
+.prompt-body-inner{padding:0 20px 20px;border-top:1px solid var(--cream)}
+.prompt-text-block{background:var(--charcoal);color:#e0e0e0;border-radius:var(--radius-sm);padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.7;position:relative;font-family:'Inter',monospace;white-space:pre-wrap;word-wrap:break-word}
+.prompt-text-block .bracket{color:var(--teal-light);font-weight:600}
+.copy-btn{position:absolute;top:10px;right:10px;background:var(--teal);color:#fff;border:none;padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:6px;font-family:inherit}
+.copy-btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.copy-btn.copied{background:var(--green)}
+.why-block,.tip-block{padding:12px 16px;border-radius:var(--radius-sm);margin-top:12px;font-size:13.5px;line-height:1.6}
+.why-block{background:var(--teal-bg);border-left:3px solid var(--teal)}
+.why-block strong,.tip-block strong{font-weight:700;display:block;margin-bottom:4px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+.tip-block{background:var(--gold-bg);border-left:3px solid var(--gold)}
+
+/* ========== TAB 2: CLOSE LOOP ========== */
+.close-hero{text-align:center;margin-bottom:32px}
+.close-hero h2{font-size:28px;font-weight:800;letter-spacing:-0.5px}
+.close-hero p{color:#666;font-size:15px;margin-top:6px}
+.close-input-area{max-width:640px;margin:0 auto 32px}
+.close-input{width:100%;padding:14px 20px;border:2px solid var(--cream);border-radius:var(--radius-md);font-size:15px;font-family:inherit;background:#fff;transition:var(--transition);resize:none}
+.close-input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-bg)}
+.close-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:12px 28px;background:var(--teal);color:#fff;border:none;border-radius:var(--radius-md);font-size:14px;font-weight:600;cursor:pointer;transition:var(--transition);font-family:inherit}
+.close-btn:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.pipeline-container{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0}
+.pipeline-stage{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-md);padding:20px 16px;text-align:center;transition:var(--transition)}
+.pipeline-stage.active{border-color:var(--teal);box-shadow:var(--shadow-md)}
+.pipeline-letter{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;margin:0 auto 8px;color:#fff}
+.pipeline-letter.c-letter{background:var(--purple)}
+.pipeline-letter.l-letter{background:var(--orange)}
+.pipeline-letter.o-letter{background:var(--teal)}
+.pipeline-letter.s-letter{background:var(--red)}
+.pipeline-letter.e-letter{background:var(--green)}
+.pipeline-stage h4{font-size:13px;font-weight:700;margin-bottom:6px}
+.pipeline-stage p{font-size:12px;color:#888;line-height:1.5}
+.workflow-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:32px}
+.workflow-card{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-md);padding:20px;transition:var(--transition);cursor:pointer}
+.workflow-card:hover{border-color:var(--teal);box-shadow:var(--shadow-md)}
+.workflow-card h4{font-size:15px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.workflow-card p{font-size:13px;color:#666;line-height:1.5}
+.workflow-detail{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--cream)}
+.workflow-card.expanded .workflow-detail{display:block}
+
+/* ========== TAB 3: 90-DAY PLANNER ========== */
+.planner-form{max-width:640px;margin:0 auto 32px;background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-lg);padding:28px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--charcoal)}
+.form-group select,.form-group input[type="range"]{width:100%;padding:10px 14px;border:1.5px solid var(--cream);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#fff;transition:var(--transition)}
+.form-group select:focus{outline:none;border-color:var(--teal)}
+.range-val{font-size:14px;font-weight:600;color:var(--teal);float:right}
+.generate-plan-btn{width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:var(--radius-md);font-size:15px;font-weight:700;cursor:pointer;transition:var(--transition);font-family:inherit}
+.generate-plan-btn:hover{background:var(--teal-dark)}
+.plan-output{margin-top:24px}
+.phase-card{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-md);padding:20px;margin-bottom:16px}
+.phase-card h3{font-size:16px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.phase-card .phase-weeks{font-size:12px;color:#888;margin-bottom:12px}
+.phase-task{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px}
+.phase-task input[type="checkbox"]{margin-top:3px;accent-color:var(--teal);width:16px;height:16px;flex-shrink:0}
+.progress-bar-container{background:var(--cream);border-radius:20px;height:12px;margin:16px 0;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:20px;transition:width 0.5s ease;width:0}
+
+/* ========== TAB 4: PLUGINS ========== */
+.plugin-card{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-md);margin-bottom:12px;overflow:hidden;transition:var(--transition)}
+.plugin-card:hover{border-color:var(--teal)}
+.plugin-card-header{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.plugin-card-header h4{font-size:15px;font-weight:600}
+.plugin-card-header span{font-size:12px;color:#888}
+.plugin-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.plugin-card.expanded .plugin-body{max-height:5000px}
+.plugin-body-inner{padding:0 20px 20px}
+.plugin-desc{font-size:13px;color:#666;margin-bottom:12px;line-height:1.5}
+.code-block{background:var(--charcoal);color:#e0e0e0;padding:16px 20px;border-radius:var(--radius-sm);font-size:12.5px;line-height:1.7;overflow-x:auto;position:relative;white-space:pre-wrap;word-wrap:break-word;font-family:'Courier New',monospace}
+.code-block .copy-btn{top:8px;right:8px}
+
+/* ========== TAB 5: ROI CALC ========== */
+.calc-container{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.calc-inputs{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-lg);padding:28px}
+.calc-outputs{background:#fff;border:1.5px solid var(--cream);border-radius:var(--radius-lg);padding:28px}
+.slider-group{margin-bottom:20px}
+.slider-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px}
+.slider-group label span{color:var(--teal);font-weight:700}
+.slider-group input[type="range"]{width:100%;height:6px;-webkit-appearance:none;background:var(--cream);border-radius:3px;outline:none}
+.slider-group input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--teal);cursor:pointer;box-shadow:var(--shadow-sm)}
+.roi-big-number{text-align:center;padding:24px;margin-bottom:20px}
+.roi-big-number .number{font-size:56px;font-weight:900;color:var(--teal);letter-spacing:-2px}
+.roi-big-number .label{font-size:14px;color:#888;font-weight:500;margin-top:4px}
+.roi-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--cream);font-size:14px}
+.roi-row:last-child{border-bottom:none}
+.roi-row .val{font-weight:700;color:var(--charcoal)}
+.chart-container{margin-top:24px;display:flex;align-items:flex-end;gap:16px;justify-content:center;height:180px;padding:20px;background:var(--warm-white);border-radius:var(--radius-sm)}
+.chart-bar{width:80px;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:height 0.5s ease;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8px}
+.chart-bar.now{background:var(--cream)}
+.chart-bar.cowork{background:linear-gradient(to top,var(--teal),var(--teal-light))}
+.chart-bar-label{font-size:11px;font-weight:600;margin-top:8px;text-align:center}
+.chart-bar-val{font-size:12px;font-weight:700;color:#fff;padding:4px}
+.chart-bar.now .chart-bar-val{color:var(--charcoal)}
+
+/* ========== TAB 6: QUICK START ========== */
+.steps-container{max-width:720px;margin:0 auto}
+.step-card{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--cream)}
+.step-card:last-child{border-bottom:none}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--teal);color:#fff;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-content h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.step-content p{font-size:14px;color:#666;line-height:1.6}
+.step-content .step-link{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;margin-top:6px;color:var(--teal)}
+
+/* ========== TAB 7: ABOUT ========== */
+.about-section{max-width:720px;margin:0 auto}
+.about-block{margin-bottom:32px}
+.about-block h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.about-block p{font-size:15px;color:#555;line-height:1.7}
+.about-cta{background:var(--charcoal);color:#fff;border-radius:var(--radius-lg);padding:32px;text-align:center;margin-top:32px}
+.about-cta h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.about-cta p{color:rgba(255,255,255,0.7);margin-bottom:16px}
+.about-cta a{display:inline-block;padding:12px 28px;background:var(--gold);color:#fff;border-radius:var(--radius-md);font-weight:700;transition:var(--transition)}
+.about-cta a:hover{background:var(--gold-dark);color:#fff}
+
+/* ========== FLOATING BOOK BUTTON ========== */
+.book-float{position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;padding:14px 24px;border-radius:var(--radius-xl);font-size:14px;font-weight:700;box-shadow:var(--shadow-xl);cursor:pointer;z-index:200;transition:var(--transition);border:none;font-family:inherit;text-decoration:none;display:flex;align-items:center;gap:8px}
+.book-float:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(201,169,97,0.35);color:#fff}
+
+/* ========== FOOTER ========== */
+.site-footer{background:var(--charcoal);color:rgba(255,255,255,0.5);text-align:center;padding:20px;font-size:12px;position:fixed;bottom:0;left:0;right:0;z-index:50}
+.site-footer a{color:var(--gold)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:900px){
+  .calc-container{grid-template-columns:1fr}
+  .pipeline-container{grid-template-columns:1fr;gap:8px}
+  .pipeline-stage{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 16px}
+  .pipeline-letter{margin:0}
+  .header-top{padding:12px 16px}
+  .tab-nav{padding:0 16px}
+  .main-content{padding:20px 16px 100px}
+  .prompt-tags{display:none}
+}
+@media(max-width:600px){
+  .workflow-cards{grid-template-columns:1fr}
+  .prompt-card-header{padding:12px 14px}
+  .prompt-title{font-size:14px}
+}
+
+/* ========== PRINT ========== */
+@media print{
+  .site-header,.tab-nav,.book-float,.site-footer,.search-container,.filter-section,.copy-btn{display:none!important}
+  .prompt-body{max-height:none!important}
+  .prompt-card{break-inside:avoid;border:1px solid #ccc}
+  .tab-panel{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-top">
+    <div class="logo">
+      <div class="logo-icon">C4C</div>
+      <div class="logo-text">
+        <h1>Cowork for Closers</h1>
+        <span>The Real Estate AI Command Center</span>
+      </div>
+    </div>
+    <div class="header-badge">55 Production-Ready Prompts</div>
+  </div>
+  <nav class="tab-nav" id="tabNav">
+    <button class="tab-btn active" data-tab="library">Prompt Library</button>
+    <button class="tab-btn" data-tab="close-loop">CLOSE Loop&trade;</button>
+    <button class="tab-btn" data-tab="planner">90-Day Planner</button>
+    <button class="tab-btn" data-tab="plugins">Plugins &amp; Skills</button>
+    <button class="tab-btn" data-tab="roi">ROI Calculator</button>
+    <button class="tab-btn" data-tab="quickstart">Quick Start</button>
+    <button class="tab-btn" data-tab="about">About</button>
+  </nav>
+</header>
+
+<main class="main-content">
+<!-- ============================================================ -->
+<!-- TAB 1: PROMPT LIBRARY -->
+<!-- ============================================================ -->
+<section class="tab-panel active" id="panel-library">
+  <div class="library-header">
+    <h2>AI Prompt Library</h2>
+    <p>55 copy-paste-ready prompts engineered for real estate professionals using Claude Cowork.</p>
+  </div>
+
+  <div class="search-container">
+    <span class="search-icon">&#128269;</span>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search prompts by title, keyword, or category...">
+    <div class="prompt-count" id="promptCount">Showing 55 of 55 prompts</div>
+  </div>
+
+  <div class="filter-section">
+    <div class="filter-row">
+      <span class="filter-label">Category</span>
+      <div id="categoryFilters"></div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Difficulty</span>
+      <span class="chip diff-beginner" data-diff="Beginner" onclick="toggleDiff(this)">Beginner</span>
+      <span class="chip diff-intermediate" data-diff="Intermediate" onclick="toggleDiff(this)">Intermediate</span>
+      <span class="chip diff-advanced" data-diff="Advanced" onclick="toggleDiff(this)">Advanced</span>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">CLOSE Stage</span>
+      <span class="chip" data-close="Capture" onclick="toggleClose(this)">Capture</span>
+      <span class="chip" data-close="Load" onclick="toggleClose(this)">Load</span>
+      <span class="chip" data-close="Orchestrate" onclick="toggleClose(this)">Orchestrate</span>
+      <span class="chip" data-close="Steer" onclick="toggleClose(this)">Steer</span>
+      <span class="chip" data-close="Extract" onclick="toggleClose(this)">Extract</span>
+    </div>
+  </div>
+
+  <div class="prompt-grid" id="promptGrid"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 2: CLOSE LOOP -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-close-loop">
+  <div class="close-hero">
+    <h2>The CLOSE Loop&trade; Diagnostic</h2>
+    <p>Describe any real estate task and get a step-by-step AI workflow using the CLOSE framework.</p>
+  </div>
+  <div class="close-input-area">
+    <textarea class="close-input" id="closeInput" rows="3" placeholder="Example: I need to prepare for a listing appointment next Tuesday at 123 Oak St..."></textarea>
+    <button class="close-btn" onclick="runCloseLoop()">&#9889; Analyze My Task</button>
+  </div>
+  <div class="pipeline-container" id="pipelineContainer">
+    <div class="pipeline-stage" id="stage-c"><div class="pipeline-letter c-letter">C</div><h4>Capture</h4><p id="stage-c-text">Gather files, data, and context needed</p></div>
+    <div class="pipeline-stage" id="stage-l"><div class="pipeline-letter l-letter">L</div><h4>Load</h4><p id="stage-l-text">Activate plugins, skills, and connectors</p></div>
+    <div class="pipeline-stage" id="stage-o"><div class="pipeline-letter o-letter">O</div><h4>Orchestrate</h4><p id="stage-o-text">Run the recommended prompt or workflow</p></div>
+    <div class="pipeline-stage" id="stage-s"><div class="pipeline-letter s-letter">S</div><h4>Steer</h4><p id="stage-s-text">Monitor execution and adjust</p></div>
+    <div class="pipeline-stage" id="stage-e"><div class="pipeline-letter e-letter">E</div><h4>Extract</h4><p id="stage-e-text">Deliver outputs and deploy</p></div>
+  </div>
+  <h3 style="font-size:20px;font-weight:800;margin:32px 0 16px">Pre-Built Real Estate Workflows</h3>
+  <div class="workflow-cards" id="workflowCards"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 3: 90-DAY PLANNER -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-planner">
+  <div style="text-align:center;margin-bottom:28px">
+    <h2 style="font-size:28px;font-weight:800">90-Day Cowork Transformation Planner</h2>
+    <p style="color:#666;font-size:15px;margin-top:6px">Get a personalized adoption plan based on your specialty and goals.</p>
+  </div>
+  <div class="planner-form">
+    <div class="form-group"><label>Your Specialty</label><select id="planSpecialty"><option>Residential</option><option>Commercial</option><option>Land &amp; Ranch</option><option>Luxury</option><option>Investment</option></select></div>
+    <div class="form-group"><label>AI Experience Level</label><select id="planExperience"><option>New to AI</option><option>Some experience</option><option>Power user</option></select></div>
+    <div class="form-group"><label>Team Size</label><select id="planTeam"><option>Solo agent</option><option>2-5 people</option><option>6-15 people</option><option>16+ people</option></select></div>
+    <div class="form-group"><label>Top Priority</label><select id="planPriority"><option>Lead Generation</option><option>Transaction Efficiency</option><option>Marketing Presence</option><option>Client Communication</option><option>Market Intelligence</option></select></div>
+    <div class="form-group"><label>Hours per week available for learning <span class="range-val" id="hoursVal">3</span></label><input type="range" min="1" max="10" value="3" id="planHours" oninput="document.getElementById('hoursVal').textContent=this.value"></div>
+    <button class="generate-plan-btn" onclick="generatePlan()">Generate My 90-Day Plan</button>
+  </div>
+  <div class="plan-output" id="planOutput"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 4: PLUGINS & SKILLS -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-plugins">
+  <div style="margin-bottom:28px">
+    <h2 style="font-size:28px;font-weight:800">Plugin &amp; Skill Templates</h2>
+    <p style="color:#666;font-size:15px;margin-top:6px">10 ready-to-install templates for real estate workflows in Cowork.</p>
+  </div>
+  <div id="pluginGrid"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 5: ROI CALCULATOR -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-roi">
+  <div style="text-align:center;margin-bottom:28px">
+    <h2 style="font-size:28px;font-weight:800">Cowork ROI Calculator</h2>
+    <p style="color:#666;font-size:15px;margin-top:6px">See how much time and money Cowork saves you every year.</p>
+  </div>
+  <div class="calc-container">
+    <div class="calc-inputs">
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:20px">Your Numbers</h3>
+      <div class="slider-group"><label>Annual GCI <span id="gciVal">$150,000</span></label><input type="range" min="50000" max="500000" step="5000" value="150000" id="gciSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Active deals at a time <span id="dealsVal">8</span></label><input type="range" min="1" max="25" value="8" id="dealsSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Hrs/week: Listing marketing <span id="mktVal">5</span></label><input type="range" min="0" max="15" value="5" id="mktSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Hrs/week: Transaction coordination <span id="txnVal">6</span></label><input type="range" min="0" max="15" value="6" id="txnSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Hrs/week: Client communication <span id="comVal">4</span></label><input type="range" min="0" max="10" value="4" id="comSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Hrs/week: Market research <span id="resVal">3</span></label><input type="range" min="0" max="10" value="3" id="resSlider" oninput="updateROI()"></div>
+      <div class="slider-group"><label>Hrs/week: Content creation <span id="cntVal">3</span></label><input type="range" min="0" max="10" value="3" id="cntSlider" oninput="updateROI()"></div>
+    </div>
+    <div class="calc-outputs">
+      <div class="roi-big-number"><div class="number" id="roiMultiple">18x</div><div class="label">Return on Investment</div></div>
+      <div class="roi-row"><span>Current weekly hours on automatable tasks</span><span class="val" id="roiHoursNow">21 hrs</span></div>
+      <div class="roi-row"><span>Estimated hours saved per week</span><span class="val" id="roiHoursSaved">13.7 hrs</span></div>
+      <div class="roi-row"><span>Your effective hourly rate</span><span class="val" id="roiHourly">$72/hr</span></div>
+      <div class="roi-row"><span>Monthly value of time recovered</span><span class="val" id="roiMonthly">$3,926</span></div>
+      <div class="roi-row"><span>Annual value of time recovered</span><span class="val" id="roiAnnual" style="color:var(--teal);font-size:16px">$47,112</span></div>
+      <div class="roi-row"><span>Cowork investment (Claude Max/year)</span><span class="val">$1,200</span></div>
+      <div class="roi-row"><span>Net annual ROI</span><span class="val" id="roiNet" style="color:var(--green)">$45,912</span></div>
+      <div class="chart-container">
+        <div><div class="chart-bar now" id="barNow" style="height:140px"><div class="chart-bar-val" id="barNowVal">21 hrs</div></div><div class="chart-bar-label">Time Now</div></div>
+        <div><div class="chart-bar cowork" id="barCowork" style="height:49px"><div class="chart-bar-val" id="barCoworkVal">7.3 hrs</div></div><div class="chart-bar-label">With Cowork</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 6: QUICK START -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-quickstart">
+  <div style="text-align:center;margin-bottom:32px">
+    <h2 style="font-size:28px;font-weight:800">Quick Start Guide</h2>
+    <p style="color:#666;font-size:15px;margin-top:6px">Go from zero to productive in 10 steps.</p>
+  </div>
+  <div class="steps-container" id="stepsContainer"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 7: ABOUT -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="panel-about">
+  <div class="about-section">
+    <div class="about-block">
+      <h3>About Cowork for Closers</h3>
+      <p>Cowork for Closers is the companion application to the book of the same name. It contains 55 meticulously engineered AI prompts designed specifically for real estate professionals using Claude's Cowork mode. Every prompt has been tested in live real estate workflows — from luxury listing descriptions to investment underwriting, from transaction management to authority marketing. This isn't a generic prompt library. Every word references real tasks, real tools, and real outcomes that matter in your business.</p>
+    </div>
+    <div class="about-block">
+      <h3>About the Author</h3>
+      <p>Ross Johnson is the founder of RealEdge Labs and the creator of the AI Authority Studio framework. With deep roots in real estate and a passion for practical AI adoption, Ross builds tools, books, and training programs that help professionals turn AI from a curiosity into a competitive advantage. His approach is simple: don't talk about AI in the abstract — show people exactly what to type, where to click, and what to expect.</p>
+    </div>
+    <div class="about-block">
+      <h3>About RealEdge Labs</h3>
+      <p>RealEdge Labs operates at the intersection of real estate expertise and AI innovation. Through the AI Authority Studio, RealEdge Labs offers Fractional CMO engagements, hands-on workshops (including the OfficeEdge intensive), authority book development, and custom micro-app builds like this one. The mission: turning expertise into authority, and authority into revenue.</p>
+    </div>
+    <div class="about-block">
+      <h3>Certification</h3>
+      <p>Complete the 90-Day Transformation Planner and all four phases to earn your designation as a <strong>Cowork-Certified Real Estate Professional</strong>. This certification signals to clients, brokerages, and your sphere that you've mastered AI-assisted real estate workflows.</p>
+    </div>
+    <div class="about-cta">
+      <h3>Ready to Transform Your Business?</h3>
+      <p>Get the book, master the prompts, and join a community of forward-thinking real estate professionals.</p>
+      <a href="https://realedgelabs.com" target="_blank">Visit RealEdge Labs</a>
+    </div>
+    <div style="text-align:center;margin-top:24px;font-size:13px;color:#888">
+      <p>Contact: <a href="mailto:hello@realedgelabs.com">hello@realedgelabs.com</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Floating Book Button -->
+<a href="#" class="book-float">&#128218; Get the Book</a>
+
+<!-- Footer -->
+<footer class="site-footer">Built by AI Authority Studio &mdash; <a href="https://realedgelabs.com" target="_blank">RealEdge Labs</a> | realedgelabs.com</footer>
+
+<script>
+// ============================================================
+// PROMPT DATA — ALL 55 PROMPTS
+// ============================================================
+const PROMPTS = [
+// ---- CATEGORY 1: LISTING & PROPERTY MARKETING (8) ----
+{id:1,title:"The Luxury Listing Description Generator",category:"Listing & Property Marketing",difficulty:"Beginner",close:"Orchestrate",
+prompt:`You are a luxury real estate copywriter specializing in high-end properties. I need you to write a compelling MLS listing description for [PROPERTY ADDRESS], a [BEDROOMS]-bedroom, [BATHROOMS]-bathroom [PROPERTY TYPE] listed at [PRICE]. Key features include: [LIST 5-7 KEY FEATURES]. The property sits on [LOT SIZE] in the [NEIGHBORHOOD] neighborhood. Target buyer profile: [BUYER DEMOGRAPHIC]. Write the description in 250-300 words using sensory language that evokes lifestyle, not just square footage. Include a compelling opening hook, three distinct sections highlighting indoor living, outdoor spaces, and neighborhood/location benefits. End with a soft call-to-action. Do NOT use clichés like 'stunning,' 'gorgeous,' or 'dream home.' Save the final copy to this folder as [ADDRESS]-listing-description.docx.`,
+why:"Cowork's folder access lets you save directly to your listing folder, keeping all marketing materials organized per property. The specific anti-cliché instruction forces Claude to write original, memorable copy.",
+tip:"Drop your MLS photos into the same folder and ask Cowork to reference them — it can see images and tailor the description to what's actually in the photos."},
+
+{id:2,title:"The Neighborhood Story Builder",category:"Listing & Property Marketing",difficulty:"Intermediate",close:"Capture",
+prompt:`I need you to research and write a comprehensive neighborhood guide for [NEIGHBORHOOD NAME] in [CITY, STATE]. Use Claude in Chrome to visit [LOCAL CHAMBER OF COMMERCE URL], [SCHOOL DISTRICT URL], and [CITY PLANNING URL] to gather current data. Create a 1,500-word guide that covers: (1) Neighborhood character and architectural styles, (2) School ratings and educational options, (3) Dining, shopping, and entertainment within a 10-minute drive, (4) Parks, trails, and outdoor recreation, (5) Market snapshot — median home price, average days on market, and price trend over the last 12 months, (6) Who lives here — demographic snapshot and lifestyle profile, (7) What's coming — planned developments or infrastructure projects. Format this as a professional PDF-ready document with headers, subheaders, and a 'Quick Facts' sidebar. Save to this folder as [NEIGHBORHOOD]-guide.md. I'll use this as a buyer handout and a blog post on my website.`,
+why:"Claude in Chrome lets Cowork browse live websites to pull current neighborhood data instead of relying on training data — critical for real estate where market conditions change monthly.",
+tip:"Schedule this prompt to run monthly with a Dispatch task and you'll always have fresh neighborhood content for your top 3-5 farm areas."},
+
+{id:3,title:"The Property Video Script Writer",category:"Listing & Property Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Write a 90-second property walkthrough video script for [PROPERTY ADDRESS] listed at [PRICE]. The video will be shot on [iPhone/professional camera] and posted to [YouTube/Instagram Reels/TikTok]. Structure the script with: (1) A 5-second hook that stops the scroll — something specific about THIS property, not generic, (2) Room-by-room walkthrough narration with transition cues marked in [BRACKETS], (3) Three 'money shots' — moments where the camera should pause and the voiceover sells a lifestyle benefit, (4) A closing call-to-action with my contact info: [YOUR NAME], [YOUR BROKERAGE], [YOUR PHONE]. Tone should be [conversational/luxury/energetic] — I'm going for a [describe your personal brand] vibe. Include B-roll suggestions in parentheses. Save as [ADDRESS]-video-script.docx.`,
+why:"Cowork generates platform-specific scripts — a TikTok script is fundamentally different from a YouTube walkthrough. Specifying the platform ensures the pacing, length, and hook style match where it'll actually be posted.",
+tip:"After filming, paste the raw transcript back into Cowork and ask it to generate captions, hashtags, and a blog post from the same content — one shoot, five pieces of content."},
+
+{id:4,title:"The Open House Marketing Blitz",category:"Listing & Property Marketing",difficulty:"Advanced",close:"Orchestrate",
+prompt:`I have an open house this [DAY] at [PROPERTY ADDRESS] from [TIME] to [TIME]. I need a complete marketing package created now. Generate ALL of the following as separate files saved to this folder: (1) An email blast to my buyer list announcing the open house — warm, personal tone, 150 words max, with the subject line included, (2) Three Instagram post captions — one teaser (post 3 days before), one day-of with urgency, one follow-up for Monday morning, (3) A Facebook event description with SEO-friendly keywords for [CITY] real estate, (4) A door-knocker script — what I'll say when I knock on 50 doors in the neighborhood this week inviting neighbors, (5) A text message template for my sphere of influence — casual, 2 sentences max, (6) An open house sign-in sheet follow-up email template — sent Monday to everyone who attended. Property highlights: [KEY FEATURES]. List price: [PRICE]. My branding: [YOUR NAME, BROKERAGE, TAGLINE].`,
+why:"This is Cowork's sub-agent power at work — one prompt generates 6+ deliverables across email, social, and in-person channels. Each piece is tailored to its platform rather than being a copy-paste of the same text.",
+tip:"Create a Cowork Project called 'Open House Playbook' and save this prompt there. Every time you have an open house, just swap the variables and run it again."},
+
+{id:5,title:"The Just Sold Storyteller",category:"Listing & Property Marketing",difficulty:"Beginner",close:"Extract",
+prompt:`I just closed on [PROPERTY ADDRESS] at [SALE PRICE] (listed at [LIST PRICE]). Write a 'Just Sold' story package for my marketing. Include: (1) A LinkedIn post (200 words) that tells the story of this deal — the challenge we overcame, the strategy that worked, and the client outcome — without being salesy or violating any client confidentiality, (2) An Instagram caption (100 words) with a celebration tone and 15 relevant hashtags for [CITY] real estate, (3) A brief case study paragraph (150 words) I can add to my website's 'Results' page, (4) A 2-sentence text message I can send to my sphere letting them know. Key deal details: [DESCRIBE THE TRANSACTION — e.g., 'multiple offer situation, buyer waived inspection, closed in 21 days']. My name: [YOUR NAME]. Brokerage: [BROKERAGE].`,
+why:"Cowork crafts platform-appropriate content from the same story — what works on LinkedIn (professional narrative) is different from Instagram (visual celebration) and text (casual brevity).",
+tip:"Ask Cowork to also generate a Nano Banana image prompt for a 'Just Sold' graphic — you'll get a branded visual to pair with the post."},
+
+{id:6,title:"The Comparative Market Analysis Narrator",category:"Listing & Property Marketing",difficulty:"Advanced",close:"Load",
+prompt:`I've saved my CMA data as a spreadsheet in this folder — [FILENAME.xlsx]. It contains comparable sales data for [SUBJECT PROPERTY ADDRESS]. Read the spreadsheet and generate: (1) A 2-page narrative CMA summary written for the SELLER — plain English, no jargon, explaining what the comps tell us about their home's value, (2) A recommended list price with a pricing strategy explanation (price it right vs. aspirational pricing), (3) A 'Comp Highlights' section that calls out the 3 most relevant comps and explains WHY they're most comparable (proximity, condition, age, size), (4) A 'Market Context' paragraph about the current [CITY/NEIGHBORHOOD] market — is it favoring buyers or sellers, what's the absorption rate suggesting, (5) A 'Recommended Adjustments' table showing how I should adjust each comp for differences. Format this as a professional report I can print and present at my listing appointment. Save as [ADDRESS]-CMA-narrative.docx.`,
+why:"Cowork's ability to read spreadsheets from your folder means it can analyze your actual CMA data — not hypothetical numbers. It transforms raw data into a seller-friendly narrative.",
+tip:"Bring your CMA spreadsheet AND your MLS photos to the same folder — Cowork can reference both to write more specific, credible comp adjustments."},
+
+{id:7,title:"The Listing Presentation Deck Builder",category:"Listing & Property Marketing",difficulty:"Advanced",close:"Orchestrate",
+prompt:`Create a 15-slide listing presentation for my appointment with [SELLER NAME] at [PROPERTY ADDRESS] on [DATE]. Build this as a professional presentation outline with the following slide-by-slide structure: Slide 1 — Title slide with my branding: [YOUR NAME], [BROKERAGE], [TAGLINE]. Slide 2 — 'Why Now' market timing data for [CITY/NEIGHBORHOOD]. Slide 3 — About Me/My Team. Slide 4 — My marketing plan overview (digital + traditional). Slide 5 — Professional photography and staging approach. Slide 6 — Digital marketing strategy (social, email, syndication). Slide 7 — Pricing strategy (CMA summary — reference the CMA narrative if it's in this folder). Slide 8 — Comparable sales visual. Slide 9 — Recommended list price. Slide 10 — My negotiation approach. Slide 11 — Timeline from listing to close. Slide 12 — Communication plan (how I keep sellers updated). Slide 13 — Client testimonials. Slide 14 — My track record (stats and awards). Slide 15 — Next steps and call-to-action. For each slide, write the headline, 3-4 bullet points of content, and speaker notes. Save as [SELLER-NAME]-listing-presentation.md.`,
+why:"Cowork generates presentation-ready content with speaker notes — you get both the slides AND what to say. This turns a 3-hour prep task into 15 minutes.",
+tip:"Feed this output into the Cowork PowerPoint cross-app workflow to generate an actual .pptx file with your branded template."},
+
+{id:8,title:"The Expired Listing Resurrection Letter",category:"Listing & Property Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Write a personalized direct mail letter to the owner of [EXPIRED LISTING ADDRESS], which expired after [DAYS ON MARKET] days on the MLS at [LAST LIST PRICE]. The property is a [PROPERTY TYPE] with [BEDROOMS] bedrooms and [BATHROOMS] bathrooms. Write a 350-word letter that: (1) Acknowledges their frustration without being patronizing, (2) Identifies 2-3 possible reasons the home didn't sell (pricing, marketing, photos, market timing) based on common patterns — but frames them as 'opportunities' not 'mistakes,' (3) Briefly describes my different approach to marketing (without bashing the previous agent), (4) Includes one specific, credible data point about the current market that suggests now is a better time, (5) Ends with a low-pressure call-to-action (free market analysis, no obligation). My name: [YOUR NAME]. Brokerage: [BROKERAGE]. Phone: [PHONE]. Tone: empathetic, confident, professional — not desperate. Save as expired-letter-[ADDRESS].docx.`,
+why:"The prompt's emotional intelligence instructions — 'acknowledge without being patronizing' and 'opportunities not mistakes' — ensure Claude generates letters that build trust rather than burning bridges.",
+tip:"Create a weekly Dispatch task that pulls expired listings from your MLS and generates a batch of personalized letters every Monday morning."},
+
+// ---- CATEGORY 2: MARKET RESEARCH & ANALYSIS (6) ----
+{id:9,title:"The Hyper-Local Market Pulse Report",category:"Market Research & Analysis",difficulty:"Intermediate",close:"Capture",
+prompt:`Using Claude in Chrome, visit [MLS WEBSITE OR REALTOR.COM URL] and [LOCAL ASSOCIATION URL] to pull the latest market data for [ZIP CODE OR NEIGHBORHOOD]. Generate a 'Market Pulse' report that includes: (1) Active listings count and median list price, (2) Pending sales count and average days to pending, (3) Closed sales in the last 30/60/90 days with median sold price, (4) List-to-sale price ratio, (5) Months of inventory (supply), (6) Price per square foot trends, (7) A plain-English 'What This Means' summary — is this a buyer's or seller's market, is pricing trending up or down, what should clients expect in the next 60 days? Format this as a one-page report I can email to my database and post on social media. Include a 'Data as of [DATE]' disclaimer. Save as market-pulse-[AREA]-[DATE].md.`,
+why:"Claude in Chrome pulls live market data directly from your MLS or Realtor.com — no more manually copying numbers into a spreadsheet. The plain-English summary makes you the local expert, not just a data reporter.",
+tip:"Schedule this as a monthly Dispatch task for your top 3 farm areas — your database gets a branded market update every 30 days on autopilot."},
+
+{id:10,title:"The Investment Property Underwriter",category:"Market Research & Analysis",difficulty:"Advanced",close:"Load",
+prompt:`I'm analyzing an investment property at [PROPERTY ADDRESS] listed at [PRICE]. It's a [PROPERTY TYPE] with [UNITS] units. I've saved the rent roll and operating expenses in this folder as [FILENAME.xlsx]. Read the spreadsheet and generate a full investment analysis including: (1) Gross Scheduled Income (GSI) and effective gross income assuming [VACANCY RATE]% vacancy, (2) Net Operating Income (NOI) calculated from actual expenses, (3) Cap rate at asking price, (4) Cash-on-cash return assuming [DOWN PAYMENT]% down at [INTEREST RATE]% over [LOAN TERM] years, (5) Debt Service Coverage Ratio (DSCR), (6) 5-year projection with [ANNUAL RENT INCREASE]% annual rent growth and [EXPENSE GROWTH]% expense growth, (7) A 'Go/No-Go' recommendation with reasoning. Format this as a professional investment memo I can share with my investor client. Include assumptions clearly labeled. Save as [ADDRESS]-investment-analysis.docx.`,
+why:"Cowork reads your actual rent roll data from the spreadsheet — no manual re-entry. It performs financial calculations that would take 30 minutes on a calculator and packages them into a client-ready memo.",
+tip:"Run this same prompt on 3-5 properties in the same folder and ask Cowork to create a comparison matrix ranking them by cash-on-cash return."},
+
+{id:11,title:"The Zoning and Land Use Decoder",category:"Market Research & Analysis",difficulty:"Advanced",close:"Capture",
+prompt:`Using Claude in Chrome, visit [CITY/COUNTY PLANNING WEBSITE URL] and research the zoning designation for [PROPERTY ADDRESS] or [PARCEL NUMBER]. The property is currently zoned [CURRENT ZONING IF KNOWN]. Generate a report that explains: (1) What the current zoning allows — permitted uses, density limits, height restrictions, setback requirements, (2) What the zoning does NOT allow — explicitly call out common buyer assumptions that are wrong, (3) Whether any overlay districts, historic designations, or planned developments affect this parcel, (4) The process and estimated timeline for a zoning variance or conditional use permit if the buyer wants to [INTENDED USE], (5) Recent zoning changes or pending applications within a 1-mile radius that could affect property value, (6) A 'Bottom Line' summary — can the buyer do what they want with this property? Write this in plain English for a buyer who doesn't speak planner jargon. Save as zoning-report-[ADDRESS].md.`,
+why:"Claude in Chrome navigates city planning portals that are notoriously hard to use — pulling zoning codes, overlay maps, and pending applications that most agents would never bother to research.",
+tip:"For land deals, pair this with the Investment Property Underwriter prompt to get both zoning feasibility AND financial underwriting in one session."},
+
+{id:12,title:"The School District Deep Dive",category:"Market Research & Analysis",difficulty:"Beginner",close:"Capture",
+prompt:`Using Claude in Chrome, visit [SCHOOL DISTRICT WEBSITE], [GREATSCHOOLS.ORG URL], and [NICHE.COM URL] for [SCHOOL DISTRICT NAME] in [CITY, STATE]. Create a buyer-friendly school district report that includes: (1) All schools serving [PROPERTY ADDRESS] — elementary, middle, high — with current ratings, (2) Enrollment numbers and student-to-teacher ratios, (3) Notable programs (IB, STEM, arts, athletics), (4) School boundary maps or a description of which streets are in which boundaries, (5) Private and charter school alternatives within 10 miles, (6) A comparison table: public school option vs. top-rated alternative, (7) What parents say — pull 3-4 representative reviews or sentiment themes. Make this something I can hand to a relocating family at a buyer consultation. Save as school-report-[AREA].md.`,
+why:"Families relocating for schools are some of the most motivated buyers. This report positions you as the agent who does the research they're already doing on their own — but better.",
+tip:"Add your own commentary at the top: 'As someone who lives in [AREA], here's what the data doesn't tell you...' — personal knowledge layered on AI research is unbeatable."},
+
+{id:13,title:"The Rental Market Analyzer",category:"Market Research & Analysis",difficulty:"Intermediate",close:"Capture",
+prompt:`Using Claude in Chrome, research the rental market for [PROPERTY TYPE] in [NEIGHBORHOOD/ZIP CODE] by visiting [ZILLOW.COM/RENTALS], [APARTMENTS.COM], and [RENTOMETER.COM]. Generate a rental market analysis that includes: (1) Current average rent for [BEDROOMS]-bedroom [PROPERTY TYPE] in this area, (2) Rent range (low-mid-high) with factors that affect pricing, (3) Vacancy rate estimates based on available listings, (4) Rent trends over the past 12 months — increasing, stable, or declining, (5) Top amenities that command premium rent in this market, (6) Comparable rental listings (5 properties with addresses, rent, and key features), (7) Recommended rent for [SUBJECT PROPERTY ADDRESS] based on condition: [DESCRIBE CONDITION]. This analysis will be used for [investor client underwriting / homeowner considering renting their property / property manager adjusting rents]. Save as rental-analysis-[AREA].md.`,
+why:"Claude in Chrome pulls real-time rental listings and rates from multiple platforms — giving you a comprehensive rental analysis that would take hours of manual research.",
+tip:"For investor clients, run this alongside the Investment Property Underwriter to combine rental market data with a full investment underwriting."},
+
+{id:14,title:"The New Construction Pipeline Tracker",category:"Market Research & Analysis",difficulty:"Intermediate",close:"Capture",
+prompt:`Using Claude in Chrome, research new construction and development projects in [CITY/AREA] by visiting [CITY PLANNING DEPARTMENT URL], [LOCAL BUSINESS JOURNAL URL], and [BUILDER WEBSITES]. Create a 'Development Pipeline' report covering: (1) Residential projects under construction — builder name, location, unit count, price range, expected completion, (2) Residential projects in the permitting/approval phase, (3) Commercial developments that will affect nearby residential values (new employers, retail centers, schools, parks), (4) Infrastructure projects (roads, transit, utilities) that signal growth corridors, (5) A 'Heat Map Description' — which sub-areas are seeing the most development activity and why, (6) Implications for existing homeowners — will new supply increase or decrease resale values? Format this as a market intelligence brief I can share with investor clients and use in listing presentations to demonstrate market expertise. Save as development-pipeline-[AREA]-[DATE].md.`,
+why:"Most agents have no idea what's being built in their market. This prompt turns public data into proprietary market intelligence that differentiates you in listing presentations.",
+tip:"Schedule this quarterly as a Dispatch task — you'll spot emerging neighborhoods before the competition."},
+
+// ---- CATEGORY 3: TRANSACTION MANAGEMENT (7) ----
+{id:15,title:"The Contract-to-Close Checklist Engine",category:"Transaction Management",difficulty:"Beginner",close:"Orchestrate",
+prompt:`I just got a property under contract. Create a comprehensive contract-to-close checklist for [PROPERTY ADDRESS]. Contract details: Buyer: [BUYER NAME], Seller: [SELLER NAME], Contract price: [PRICE], Closing date: [DATE], Earnest money: [AMOUNT] due by [DATE], Inspection contingency: [YES/NO] with deadline [DATE], Financing contingency: [YES/NO] with deadline [DATE], Appraisal contingency: [YES/NO]. Generate a day-by-day task list from today through closing that includes: (1) All critical deadlines with dates calculated from the contract date, (2) Who is responsible for each task (buyer, seller, buyer's agent, listing agent, lender, title company), (3) Communication touchpoints — when to call/email each party, (4) Red flag warnings — what to watch for at each stage, (5) Documents needed at each phase. Format as a detailed checklist with checkboxes. Save as closing-checklist-[ADDRESS].md.`,
+why:"Cowork calculates actual dates from your contract terms — no more manually counting days on a calendar. Every deadline is specific and actionable.",
+tip:"After generating the checklist, create a Cowork scheduled task that sends you a morning brief of that day's action items throughout the transaction."},
+
+{id:16,title:"The Inspection Report Translator",category:"Transaction Management",difficulty:"Intermediate",close:"Load",
+prompt:`I've saved the home inspection report for [PROPERTY ADDRESS] in this folder as [FILENAME.pdf]. Read the inspection report and generate: (1) An 'Executive Summary' — the top 5 most significant findings ranked by estimated repair cost and safety concern, (2) A 'Repair Request Recommendation' — which items to request repair/credit for and which to let go, with estimated costs for each, (3) A 'Client-Friendly Summary' written in plain English (no inspector jargon) that I can email to my [buyer/seller] client explaining what the report found, (4) A negotiation strategy — how to present the repair request to the other side to maximize our position, (5) Red flags that could affect insurability or lendability (roof age, foundation, electrical, plumbing). Include a total estimated repair cost range. Save as inspection-summary-[ADDRESS].md.`,
+why:"Cowork reads the actual PDF inspection report from your folder — no retyping. It translates technical inspector language into client-friendly summaries and strategic repair requests.",
+tip:"Upload the inspection photos too — Cowork can see images and reference specific visual issues in its summary."},
+
+{id:17,title:"The Multi-Offer Strategy Advisor",category:"Transaction Management",difficulty:"Advanced",close:"Steer",
+prompt:`I'm representing the [BUYER/SELLER] in a multiple-offer situation on [PROPERTY ADDRESS] listed at [LIST PRICE]. I've received [NUMBER] offers. Here are the key terms of each: [OFFER 1: Price, financing type, down payment %, contingencies, closing timeline, escalation clause Y/N, other terms]. [OFFER 2: Same details]. [OFFER 3: Same details]. Generate: (1) A side-by-side comparison matrix of all offers, (2) A 'Net to Seller' calculation for each offer accounting for financing risk, timeline, and concessions, (3) A ranked recommendation with rationale — which offer is strongest and why, (4) Counter-offer strategy for the top 2 offers — specific terms to counter and why, (5) A script for calling the losing agents to reject their offers professionally, (6) Risk factors to discuss with my client before accepting. If I'm the buyer's agent: instead generate a strategy to make MY offer stand out, including escalation clause recommendations and a persuasive buyer letter outline. Save as multi-offer-strategy-[ADDRESS].md.`,
+why:"Multiple-offer situations are high-pressure and time-sensitive. Cowork processes all the variables simultaneously and generates a clear recommendation with supporting analysis.",
+tip:"For seller-side, copy the comparison matrix directly into your email to the seller — it demonstrates your professionalism and makes their decision easier."},
+
+{id:18,title:"The Title Issue Navigator",category:"Transaction Management",difficulty:"Advanced",close:"Steer",
+prompt:`A title issue has come up on [PROPERTY ADDRESS]. The title company ([TITLE COMPANY NAME]) has identified the following concern: [DESCRIBE THE TITLE ISSUE — e.g., 'unknown lien from 2019,' 'boundary dispute with neighbor,' 'unreleased deed of trust,' 'easement not recorded,' 'probate required']. Research this type of title issue and generate: (1) A plain-English explanation of what this means for my client, (2) Common resolution paths for this specific type of issue, (3) Estimated timeline to resolve, (4) Who needs to take action (seller, seller's attorney, title company, lien holder), (5) Whether this is a deal-breaker or a deal-delayer — and what contract provisions protect my client, (6) Questions I should ask the title company, (7) An email template to send my client explaining the situation without causing panic. Save as title-issue-[ADDRESS].md.`,
+why:"Title issues are one of the top deal-killers in real estate. This prompt gives you an instant game plan instead of scrambling.",
+tip:"Send the title company's actual commitment letter to the same folder — Cowork can read it and reference the specific exception numbers in its analysis."},
+
+{id:19,title:"The Appraisal Gap Battle Plan",category:"Transaction Management",difficulty:"Intermediate",close:"Steer",
+prompt:`The appraisal just came in at [APPRAISED VALUE] on [PROPERTY ADDRESS], which is [AMOUNT] below the contract price of [CONTRACT PRICE]. I'm representing the [BUYER/SELLER]. Generate: (1) An explanation of all options available — renegotiate price, buyer covers gap, split the difference, challenge the appraisal, walk away, (2) A negotiation strategy specific to my position (buyer vs. seller), (3) Comparable sales that may have been missed by the appraiser — suggest 3-5 criteria for finding better comps in [NEIGHBORHOOD] (sale date, proximity, condition, size), (4) A 'Reconsideration of Value' rebuttal template with the structure required by lenders — how to format comparable evidence for the appraiser, (5) Talking points for my conversation with my client about their options, (6) An email template to the other agent proposing our preferred resolution. Save as appraisal-gap-strategy-[ADDRESS].md.`,
+why:"Appraisal gaps are emotionally charged — Cowork gives you a structured approach instead of reactive panic, with a professional rebuttal template that follows lender requirements.",
+tip:"If you have the appraisal report PDF, drop it in the folder — Cowork can identify which comps the appraiser used and find gaps in their analysis."},
+
+{id:20,title:"The Closing Cost Estimator and Explainer",category:"Transaction Management",difficulty:"Beginner",close:"Orchestrate",
+prompt:`Generate a detailed closing cost estimate for [BUYER/SELLER] on [PROPERTY ADDRESS] at a [SALE PRICE] sale price in [COUNTY, STATE]. Financing details: [CONVENTIONAL/FHA/VA/CASH] loan, [DOWN PAYMENT]% down, [INTEREST RATE]% rate. Include: (1) A line-by-line closing cost breakdown with estimated dollar amounts for all standard fees (title insurance, escrow fees, recording fees, transfer taxes, prorated property taxes, HOA prorations if applicable, lender fees, prepaid interest, insurance), (2) Total estimated cash needed at closing, (3) A plain-English explanation of each line item — what it is and why they're paying it, (4) Which costs are negotiable and which are fixed, (5) Strategies to reduce closing costs (seller concessions, lender credits, shopping title companies). Format as a professional worksheet I can review with my client at our pre-closing meeting. Include a disclaimer that these are estimates and the final numbers come from the title company. Save as closing-costs-[ADDRESS].md.`,
+why:"Buyers are often blindsided by closing costs. This prompt creates a detailed, plain-English breakdown that builds trust and reduces last-minute surprises.",
+tip:"Run this at the beginning of the transaction and again 2 weeks before closing — comparing the estimate to the actual CD shows your clients you're on top of every dollar."},
+
+{id:21,title:"The Transaction Communication Autopilot",category:"Transaction Management",difficulty:"Advanced",close:"Extract",
+prompt:`Set up a complete communication sequence for the transaction on [PROPERTY ADDRESS]. Buyer: [BUYER NAME/EMAIL]. Seller: [SELLER NAME/EMAIL]. Lender: [LENDER NAME/EMAIL]. Title Company: [TITLE CONTACT/EMAIL]. Key dates: Contract date [DATE], Inspection deadline [DATE], Appraisal deadline [DATE], Financing deadline [DATE], Closing date [DATE]. Generate the following email templates, each personalized with the specific transaction details: (1) 'Welcome to the Transaction' email to all parties with timeline overview, (2) Post-inspection update email to client, (3) Appraisal ordered notification, (4) Appraisal received notification, (5) Clear-to-close celebration email to client, (6) 48-hour pre-closing reminder with what to bring, (7) Post-closing thank you and review request, (8) 30-day post-closing check-in. For each email, include subject line, body text, and any attachments to reference. Save all templates as transaction-emails-[ADDRESS].md.`,
+why:"This creates your entire transaction communication plan in one prompt — 8 professional emails that keep all parties informed and position you as an exceptionally organized agent.",
+tip:"Set up a Cowork scheduled task to send each email on the actual date — fully automated transaction communication."},
+
+// ---- CATEGORY 4: CLIENT COMMUNICATION (6) ----
+{id:22,title:"The Buyer Consultation Prep Kit",category:"Client Communication",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`I have a buyer consultation scheduled with [CLIENT NAME] on [DATE]. They're looking for a [PROPERTY TYPE] in [AREA/NEIGHBORHOOD] with a budget of [BUDGET]. They're [FIRST-TIME BUYERS / MOVE-UP BUYERS / INVESTORS / RELOCATING FROM [CITY]]. Generate a complete consultation prep package: (1) A pre-consultation questionnaire (10 questions) I should email them before we meet — covering must-haves, nice-to-haves, deal-breakers, timeline, and financing status, (2) A market snapshot for their target area and price range, (3) A 'What to Expect' document explaining the buying process from consultation to closing, (4) A buyer agency agreement talking points sheet — how to explain my value and compensation, (5) A list of recommended next steps based on their stage (pre-approval, initial search, ready to offer), (6) Three conversation-starter questions that reveal their true motivation for buying. Save as buyer-consult-[CLIENT-NAME].md.`,
+why:"Walking into a buyer consultation with a printed prep package immediately differentiates you from agents who just wing it. Cowork creates everything in one shot.",
+tip:"After the consultation, paste your notes back into Cowork and ask it to generate a personalized property search criteria summary to email the client."},
+
+{id:23,title:"The Weekly Seller Update Generator",category:"Client Communication",difficulty:"Beginner",close:"Extract",
+prompt:`Generate this week's seller update email for [SELLER NAME] at [PROPERTY ADDRESS], listed at [PRICE] for [DAYS ON MARKET] days. This week's activity: [DESCRIBE — e.g., '3 showings, 1 second showing scheduled, no offers, 2 Zillow saves']. Online metrics: [DESCRIBE — e.g., '450 views on Zillow, 12 saves, 89 clicks on MLS']. Write a professional but warm email that: (1) Leads with the most positive data point, (2) Provides context for the activity level — is this normal for the market, price range, and time of year? (3) Shares what I'm doing proactively this week to generate more interest (specific marketing actions), (4) Addresses any concerns they may have based on the data without being defensive, (5) Ends with a clear next step or recommendation. If days on market exceed 21 and we've had fewer than [NUMBER] showings, include a diplomatic discussion of whether a price adjustment conversation is warranted. Keep it under 300 words. Subject line included. Save as seller-update-[DATE].md.`,
+why:"Consistent seller communication is the #1 factor in listing retention. This prompt ensures every update is professional, data-driven, and proactive — even when there's not much to report.",
+tip:"Create a Friday afternoon Dispatch task that generates this email automatically — you just review, personalize the opening line, and hit send."},
+
+{id:24,title:"The Client Objection Handler",category:"Client Communication",difficulty:"Intermediate",close:"Steer",
+prompt:`My [BUYER/SELLER] client just said: '[PASTE THE EXACT OBJECTION — e.g., We think we should wait for prices to drop / We want to list at $50K above your recommendation / We want to skip the inspection / My cousin is an agent but we want to work with you and them].' Generate: (1) An empathetic response that acknowledges their concern without agreeing with it, (2) A data-driven counterpoint with specific market evidence, (3) A story or analogy that illustrates the risk of their proposed approach, (4) Two questions I can ask that will help them arrive at the right conclusion on their own (Socratic method), (5) A 'what if' scenario — what happens if they follow their instinct vs. my recommendation, (6) A graceful fallback position if they insist on their approach — how do I protect them while respecting their decision? Write this as a conversation guide, not a script — I need to sound natural, not rehearsed. Save as objection-response-[TOPIC].md.`,
+why:"Real objection handling isn't about winning arguments — it's about asking the right questions. This prompt generates Socratic approaches that help clients convince themselves.",
+tip:"Build a folder of objection responses over time — after 20-30 conversations, you'll have a complete objection-handling playbook."},
+
+{id:25,title:"The Referral Request Sequence",category:"Client Communication",difficulty:"Beginner",close:"Extract",
+prompt:`Generate a 3-part referral request sequence for [CLIENT NAME], who I just helped [BUY/SELL] their home at [ADDRESS]. The deal closed on [DATE] and they were [DESCRIBE SATISFACTION LEVEL — e.g., 'thrilled with the outcome, left a great review on Zillow']. Part 1 (send at closing): A thank-you message that subtly plants the seed for referrals without directly asking — focus on gratitude and 'if you know anyone...' Part 2 (send 30 days post-closing): A check-in email asking how they're settling in, with a more direct but still warm referral ask and a link to leave a Google review at [YOUR GOOGLE REVIEW LINK]. Part 3 (send 90 days post-closing): A 'keeping in touch' message with a market update for their neighborhood and a referral ask framed as 'I have room for 2 more clients this [QUARTER].' Each message should feel personal to THIS client, not templated. Keep each under 150 words. Save as referral-sequence-[CLIENT-NAME].md.`,
+why:"A structured referral sequence converts 3x more referrals than a single post-closing ask. Cowork personalizes each touchpoint to the specific client relationship.",
+tip:"Set up Cowork scheduled tasks to auto-generate these at 0, 30, and 90 days post-closing — referral farming on autopilot."},
+
+{id:26,title:"The Sphere of Influence Monthly Touchpoint",category:"Client Communication",difficulty:"Beginner",close:"Orchestrate",
+prompt:`Write this month's sphere of influence email newsletter for [MONTH, YEAR]. My name: [YOUR NAME], [BROKERAGE], serving [AREA/MARKET]. The email should include: (1) A brief personal update (1-2 sentences — give me 3 options: family/lifestyle, market observation, or professional milestone), (2) A 'Market Minute' — 3 key stats about the local market this month in plain English, (3) A seasonal homeowner tip relevant to [MONTH] (maintenance, design, energy savings), (4) A featured listing or 'just sold' — [PROPERTY DETAILS IF APPLICABLE, or write 'none this month'], (5) A community spotlight — a local business, event, or restaurant recommendation, (6) A soft call-to-action: 'Thinking about buying or selling? Let's chat.' Keep the total email under 500 words. Tone: friendly neighbor who happens to be a real estate expert. Not salesy. Subject line included. Save as sphere-email-[MONTH]-[YEAR].md.`,
+why:"Consistent sphere marketing is the highest-ROI activity in real estate. This prompt generates a value-packed newsletter that keeps you top-of-mind without being annoying.",
+tip:"Connect Cowork to your Gmail and generate this on the 1st of every month with a scheduled task — 12 newsletters, zero effort."},
+
+{id:27,title:"The Past Client Re-Engagement Campaign",category:"Client Communication",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`I need to re-engage past clients I've lost touch with. Generate a 5-email re-engagement campaign that I can send over 4 weeks to my dormant database. Context: I'm [YOUR NAME] with [BROKERAGE] in [MARKET AREA]. It's been [1-3 years] since many of these clients have heard from me. Email 1 (Week 1): 'I've been thinking about you' — personal, warm, no ask. Reference the specific value of homes in their area. Email 2 (Week 1, Day 4): 'Your home's value has changed' — provide a hook to request a free home valuation. Email 3 (Week 2): 'What's happening in your neighborhood' — hyperlocal market update. Email 4 (Week 3): Social proof — share a recent success story (use [RECENT CLIENT WIN DETAILS]). Email 5 (Week 4): Direct ask — 'Are you thinking about making a move?' with a low-pressure CTA to schedule a call. Each email: under 200 words, mobile-friendly, one clear CTA. Subject lines included. Save as re-engagement-campaign.md.`,
+why:"80% of past clients use a different agent for their next transaction — usually because the first agent stopped communicating. This sequence rebuilds the relationship systematically.",
+tip:"Segment your database by years-since-transaction and customize Email 1 for each segment — '2 years already!' vs. 'Can you believe it's been 5 years?'"},
+// ---- CATEGORY 5: AUTHORITY CONTENT & MARKETING (8) ----
+{id:28,title:"The Weekly LinkedIn Authority Post",category:"Authority Content & Marketing",difficulty:"Beginner",close:"Orchestrate",
+prompt:`Write a LinkedIn post that positions me as a local real estate authority. My name: [YOUR NAME], [TITLE] at [BROKERAGE] in [CITY/MARKET]. This week's topic: [CHOOSE ONE: market insight / deal story / client lesson / industry opinion / local market data / career reflection / team culture / homeowner tip]. The post should: (1) Open with a hook in the first line that stops the scroll — a surprising stat, contrarian opinion, or specific story detail, (2) Tell a brief story or share an insight from my actual experience (I'll fill in details: [PROVIDE A BRIEF CONTEXT OR STORY SEED]), (3) Deliver a clear takeaway or lesson, (4) End with a question that drives comments, (5) Include 3-5 relevant hashtags. Length: 150-200 words (LinkedIn sweet spot). Tone: confident expert who shares openly, not a salesperson. No emojis in every sentence. No 'I'm humbled to announce...' clichés. Save as linkedin-post-[DATE].md.`,
+why:"LinkedIn's algorithm rewards posts that generate comments. The mandatory ending question and scroll-stopping hook are engineered for engagement, not just impressions.",
+tip:"Batch-create 4 posts at once by running this prompt 4 times with different topics — schedule them in LinkedIn's native scheduler for the whole month."},
+
+{id:29,title:"The YouTube Channel Script Factory",category:"Authority Content & Marketing",difficulty:"Advanced",close:"Orchestrate",
+prompt:`Write a complete YouTube video script for my real estate channel. My channel: [CHANNEL NAME], focused on [NICHE — e.g., 'first-time buyers in Denver,' 'luxury mountain properties,' 'real estate investing for beginners']. This video's topic: [TOPIC]. Target length: [5/8/12] minutes. Structure the script with: (1) Pre-roll hook (15 seconds) — pose a provocative question or share a shocking stat, (2) Intro with channel branding (15 seconds) — 'I'm [NAME], and on this channel we...,' (3) The main content broken into 3-4 clear sections with transition phrases, (4) B-roll suggestions in [brackets] throughout, (5) One 'subscribe and hit the bell' CTA placed at a natural value moment (NOT at the beginning), (6) Outro with next video tease and end screen prompts. Write in conversational spoken English — contractions, short sentences, rhetorical questions. Include a video title (under 60 characters, curiosity-driven), video description (200 words with keywords for [MARKET] real estate), and 15 tags. Save as youtube-script-[TOPIC].md.`,
+why:"YouTube is the #1 search engine for home buyers. This prompt generates scripts optimized for watch time (structured hooks and sections) and SEO (keyword-rich descriptions and tags).",
+tip:"After filming, feed the transcript back to Cowork and ask it to generate a blog post, 3 LinkedIn posts, and 5 Instagram captions from the same content."},
+
+{id:30,title:"The Blog Post Authority Builder",category:"Authority Content & Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Write a 1,200-word blog post for my real estate website ([WEBSITE URL]) on the topic: '[BLOG TITLE OR TOPIC].' Target audience: [WHO — e.g., 'first-time home buyers in [CITY],' 'homeowners considering selling in 2025,' 'real estate investors']. The post should: (1) Target the primary keyword: '[TARGET KEYWORD]' with natural placement in the title, first paragraph, 2-3 subheadings, and conclusion, (2) Open with a relatable scenario or question that hooks the reader, (3) Use H2 and H3 subheadings for scannable structure, (4) Include at least one original insight or local market data point that readers can't get from generic national articles, (5) Embed a contextual CTA mid-article (not just at the end) — something like 'Want to see how this applies to your neighborhood? [Contact me],' (6) Close with a clear summary and next-step CTA, (7) Include a meta description (155 characters) and suggested internal link placements. Write in my voice: [DESCRIBE YOUR TONE — approachable, data-driven, straight-talking, etc.]. Save as blog-[TOPIC-SLUG].md.`,
+why:"Cowork writes SEO-optimized blog posts with local data and authentic voice — the two things that differentiate your content from the generic AI-generated articles flooding the internet.",
+tip:"Generate a Nano Banana prompt for the featured image — search engines reward pages with original images over stock photos."},
+
+{id:31,title:"The Instagram Content Calendar Builder",category:"Authority Content & Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a 30-day Instagram content calendar for my real estate brand. My handle: [@HANDLE]. My niche: [YOUR NICHE — e.g., 'luxury homes in [CITY],' 'first-time buyer education,' 'investment property analysis']. My content pillars are: (1) Market insights, (2) Property showcases, (3) Client stories, (4) Personal/behind-the-scenes, (5) Education/tips. For each of the 30 days, provide: Day number, content pillar, post type (carousel, reel, single image, story series), caption (100-150 words with hashtags), and a visual direction note (what the image/video should show). Include: 5 Reels concepts with hooks, 4 carousel ideas with slide breakdowns, 3 story series with 5+ frames each. Posting schedule: [5 posts/week, 3 stories/day]. Hashtag strategy: 5 broad, 5 mid-range, 5 hyperlocal for [CITY] real estate. Save as instagram-calendar-[MONTH].md.`,
+why:"Batch content creation is 10x more efficient than daily posting. This calendar gives you a month of strategic, varied content mapped to proven engagement patterns.",
+tip:"Generate the calendar, then run each Reel concept through the Property Video Script Writer prompt to get full scripts for your video content."},
+
+{id:32,title:"The Email Newsletter Campaign Builder",category:"Authority Content & Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a 12-month email newsletter plan for my real estate database. My name: [YOUR NAME], [BROKERAGE], serving [MARKET AREA]. My database includes: [DESCRIBE — past clients, sphere of influence, leads, investors, etc.]. For each month, generate: (1) Newsletter theme that's timely and relevant, (2) Subject line (A/B test — provide 2 options), (3) Feature article topic (300 words), (4) Market data section with specific metrics to include, (5) Seasonal homeowner tip, (6) Featured listing or testimonial section, (7) Community event or local business spotlight, (8) CTA for that month's focus. Also include: a welcome sequence for new subscribers (3 emails), a birthday email template, and a home anniversary email template. Total email count: 12 monthly + 3 welcome + 2 triggered = 17 templates. Save as email-plan-[YEAR].md.`,
+why:"A year-long email plan means you never stare at a blank screen wondering what to send. Cowork generates strategic, seasonal content that converts because it's timely and locally relevant.",
+tip:"Generate the full year plan, then each month use the Sphere Touchpoint prompt to flesh out that month's newsletter into send-ready copy."},
+
+{id:33,title:"The Podcast Episode Outline Generator",category:"Authority Content & Marketing",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a complete podcast episode outline for my real estate podcast: '[PODCAST NAME].' Episode topic: '[TOPIC].' Episode format: [SOLO / INTERVIEW WITH [GUEST NAME, TITLE]]. Target length: [20/30/45] minutes. Structure: (1) Cold open teaser (30 seconds) — the most interesting thing from the episode to hook listeners, (2) Intro and episode overview, (3) Main content in 3-4 segments with talking points, stories, and data to reference, (4) If interview format: 10 questions in ascending depth — start easy, build to the meat, end with a memorable closer, (5) Listener action item — one specific thing they can do after this episode, (6) CTA for subscribe, review, and [YOUR SPECIFIC CTA — e.g., 'download my buyer guide at [URL]']. Also generate: Episode title (curiosity-driven, under 60 characters), show notes (200 words), and 3 audiogram quote candidates (10-15 second sound bites that work out of context). Save as podcast-ep-[NUMBER]-[TOPIC].md.`,
+why:"Podcast episodes without outlines ramble. This structure keeps you focused, ensures value delivery, and creates repurposable content (audiograms, show notes) from every recording.",
+tip:"After recording, feed the transcript back to Cowork for a full blog post, LinkedIn post, and YouTube description — one recording, five platforms."},
+
+{id:34,title:"The Client Success Story for Social Proof",category:"Authority Content & Marketing",difficulty:"Beginner",close:"Extract",
+prompt:`Write a client success story based on this recent transaction. Client: [CLIENT NAME or 'Anonymous']. Transaction type: [FIRST-TIME BUYER / SELLER / INVESTOR / RELOCATION]. Property: [BRIEF DESCRIPTION]. Challenge: [THE MAIN OBSTACLE — e.g., 'competing against 7 offers,' 'selling a home with foundation issues,' 'finding a home in 2 weeks for a job relocation']. Outcome: [RESULT — price, timeline, how it was resolved]. Generate: (1) A 300-word narrative for my website's testimonials page (third-person), (2) A 150-word Instagram caption (first-person from my perspective), (3) A 100-word Google Business Profile review request — an email asking the client to share their experience with specific prompts about what to mention, (4) A 50-word pull quote for my listing presentation. Tone: authentic, grateful, focused on the client's journey (not self-congratulatory). Save as success-story-[CLIENT].md.`,
+why:"Social proof is the most powerful marketing asset. This prompt extracts one client win into four formats for different platforms — maximum mileage from every success.",
+tip:"Build a 'Success Stories' folder and generate one after every closing — in a year, you'll have a library of proof that sells for you."},
+
+{id:35,title:"The Local SEO Content Cluster Generator",category:"Authority Content & Marketing",difficulty:"Advanced",close:"Orchestrate",
+prompt:`Generate a complete SEO content cluster targeting '[PRIMARY KEYWORD]' for my real estate website. My market: [CITY/AREA]. Target audience: [BUYER/SELLER/INVESTOR]. Create: (1) A pillar page outline (2,500 words) targeting the primary keyword with comprehensive coverage, (2) 8 cluster articles (800-1,000 words each) targeting long-tail variations — provide titles, target keywords, and brief outlines, (3) Internal linking strategy — how each cluster article links to the pillar page and to each other, (4) Schema markup recommendations for each page (FAQ, HowTo, RealEstateListing as appropriate), (5) Meta titles and descriptions for all 9 pages, (6) A content production calendar — which to write first for maximum SEO impact. Keyword research: for each piece, include primary keyword, 3 secondary keywords, and estimated search intent (informational, transactional, navigational). Save as seo-cluster-[KEYWORD].md.`,
+why:"Google rewards topical authority — a cluster of interlinked content signals deep expertise. This prompt builds an entire SEO strategy that would cost $2,000+ from an agency.",
+tip:"Generate the cluster plan, then feed each article outline to the Blog Post Builder prompt to produce the actual content — complete SEO cluster in an afternoon."},
+
+// ---- CATEGORY 6: PRESENTATIONS & PROPOSALS (5) ----
+{id:36,title:"The Buyer Agency Presentation Builder",category:"Presentations & Proposals",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a 10-slide buyer agency presentation I can use to explain my value and secure a buyer agency agreement. Context: Post-NAR settlement, I need to clearly articulate my compensation and value. My name: [YOUR NAME], [BROKERAGE], [YEARS] years of experience in [MARKET]. My compensation structure: [DESCRIBE — e.g., 'I charge [X]% buyer agency fee, with strategies to offset through seller concessions or credits']. Build slides covering: Slide 1 — Welcome and agenda. Slide 2 — How buying a home really works (timeline visual). Slide 3 — What a buyer's agent does (specific tasks, not vague promises). Slide 4 — My specific value: market access, negotiation track record, problem-solving examples. Slide 5 — How I get paid and what's changed in the industry. Slide 6 — Compensation strategies that can reduce your out-of-pocket cost. Slide 7 — My process from consultation to closing. Slide 8 — What you can expect from me (communication commitments). Slide 9 — Client testimonials and track record. Slide 10 — Let's get started — next steps. Speaker notes for each slide. Save as buyer-agency-presentation.md.`,
+why:"The NAR settlement changed how buyers understand agent compensation. This presentation proactively addresses the elephant in the room with confidence and transparency.",
+tip:"Feed this into Cowork's PowerPoint cross-app workflow to generate an actual branded .pptx file."},
+
+{id:37,title:"The Market Update Presentation for Events",category:"Presentations & Proposals",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a 20-minute market update presentation I can deliver at [EVENT — e.g., 'Rotary Club lunch,' 'office meeting,' 'investor group,' 'first-time buyer seminar']. Market: [CITY/AREA]. Audience: [DESCRIBE]. Build a presentation with: (1) An attention-grabbing opening stat or question, (2) 'What happened' — key metrics from the last [QUARTER/YEAR] with year-over-year comparisons, (3) 'What's driving it' — interest rates, inventory, migration patterns, employment, new construction, (4) 'What it means for [AUDIENCE]' — translate data into actionable advice, (5) 'My predictions' — 3 specific predictions for the next 6-12 months (bold, defensible, memorable), (6) Q&A prep — the 5 questions this audience is most likely to ask, with answers, (7) Close with my contact info and a specific offer (free market analysis, buyer consultation, etc.). Include data visualization suggestions for each slide. Speaker notes throughout. Save as market-presentation-[EVENT].md.`,
+why:"Speaking at local events is the highest-ROI marketing activity in real estate. This prompt gives you a polished, data-driven presentation that positions you as THE market expert.",
+tip:"Schedule this prompt to run quarterly with updated data — you'll always be ready when a speaking opportunity comes up."},
+
+{id:38,title:"The Investor Pitch Deck Creator",category:"Presentations & Proposals",difficulty:"Advanced",close:"Orchestrate",
+prompt:`Create an investor-focused pitch deck for [INVESTMENT OPPORTUNITY — e.g., 'a 12-unit apartment complex,' 'a fix-and-flip opportunity,' 'a new development project,' 'a syndication offering']. Property: [ADDRESS/DESCRIPTION]. I'm presenting to [AUDIENCE — e.g., 'private investors,' 'my investment group,' 'a potential partner']. Build slides: Slide 1 — Executive summary and investment thesis (one sentence: why this deal). Slide 2 — Property overview with photos placeholder notes. Slide 3 — Market analysis — why THIS location. Slide 4 — Financial summary — purchase price, renovation/development costs, projected returns. Slide 5 — Comparable sales/rents supporting the valuation. Slide 6 — Pro forma — 5-year projected cash flows. Slide 7 — Risk factors and mitigation strategies. Slide 8 — Deal structure and investor terms. Slide 9 — Timeline from acquisition to [stabilization/exit]. Slide 10 — The team — who's executing this deal. Slide 11 — Call to action — next steps to participate. All financial projections should use these inputs: [PURCHASE PRICE, REHAB BUDGET, PROJECTED RENTS, EXIT PRICE, HOLD PERIOD]. Speaker notes included. Save as investor-pitch-[PROPERTY].md.`,
+why:"Investor presentations need to be simultaneously exciting and credible. This prompt balances the sizzle (lifestyle, returns) with the steak (risk analysis, pro forma).",
+tip:"Drop your actual financial model spreadsheet into the folder — Cowork can read it and populate the pro forma slides with real numbers."},
+
+{id:39,title:"The Listing Marketing Proposal",category:"Presentations & Proposals",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a comprehensive marketing proposal I can present to [SELLER NAME] for the listing at [PROPERTY ADDRESS]. The property is a [DESCRIPTION] with a proposed list price of [PRICE]. My marketing plan includes: [LIST YOUR ACTUAL SERVICES — professional photography, drone, 3D tour, social media, email blasts, print, etc.]. Build a professional proposal document that includes: (1) Cover page with property photo placeholder and my branding, (2) Executive summary — why this property will sell and why I'm the agent to do it, (3) Market positioning analysis — where this property fits in the competitive landscape, (4) Complete marketing timeline — week-by-week plan from pre-listing to live on MLS, (5) Each marketing channel detailed: what I'll do, when, and expected reach/impact, (6) My digital marketing strategy with specific platforms and ad spend recommendations, (7) Pricing strategy rationale, (8) Communication plan — how and when I'll update them, (9) My track record — stats that demonstrate results, (10) Commission structure and what's included, (11) Signatures page. Save as marketing-proposal-[ADDRESS].md.`,
+why:"A detailed marketing proposal wins listings over generic 'I'll work hard for you' pitches. This document demonstrates professionalism and strategic thinking that sellers crave.",
+tip:"Keep a template version and customize for each listing — Cowork can update variables in seconds for your next listing appointment."},
+
+{id:40,title:"The Team Meeting Agenda and Action Items",category:"Presentations & Proposals",difficulty:"Beginner",close:"Orchestrate",
+prompt:`Generate this week's team meeting agenda for my real estate team: [TEAM NAME] at [BROKERAGE]. Meeting date: [DATE], [TIME], [LOCATION/ZOOM]. Team members: [LIST NAMES AND ROLES]. Create an agenda that includes: (1) Opening — celebrations and wins from the week (leave blanks for me to fill in), (2) Numbers review — [ACTIVE LISTINGS], [PENDING], [CLOSED THIS MONTH], [NEW LEADS], (3) Pipeline review — one line per active deal with status and next action, (4) Hot topics this week: [LIST 2-3 TOPICS], (5) Training moment — a 5-minute skill share on [TOPIC], (6) Role play scenario — a common objection or negotiation situation for the team to practice, (7) Action items from last week — status check (reference [LAST WEEK'S NOTES IF IN FOLDER]), (8) New action items — assigned to specific people with deadlines, (9) Closing motivation — a relevant quote or market insight. Keep the agenda to one page. Save as team-meeting-[DATE].md.`,
+why:"Structured team meetings keep everyone accountable and productive. This prompt generates a professional agenda in 30 seconds that would normally take 20 minutes to build.",
+tip:"After the meeting, paste your handwritten notes into Cowork and ask it to generate formatted meeting minutes with action items — send to the team within an hour."},
+
+// ---- CATEGORY 7: PLUGINS & CUSTOM SKILLS (5) ----
+{id:41,title:"The Real Estate Transaction Plugin Builder",category:"Plugins & Custom Skills",difficulty:"Advanced",close:"Load",
+prompt:`Create a complete Cowork plugin called 'transaction-pro' for managing real estate transactions. The plugin should include these 5 slash commands: (1) /new-deal — Creates a new transaction folder with subfolders for contract documents, inspection, appraisal, title, closing, and communication logs. Generates a contract-to-close checklist based on inputs (address, price, closing date, contingency dates). (2) /deal-status — Scans the active transaction folder and generates a status summary: days to closing, upcoming deadlines in the next 7 days, missing documents, and action items. (3) /client-update — Generates a professional weekly update email for the client based on the current deal status, recent activity, and upcoming milestones. (4) /deadline-alert — Calculates all contract deadlines and generates calendar entries with 48-hour advance warnings. (5) /close-prep — Generates a closing preparation checklist for the final 10 days: final walkthrough scheduling, utility transfers, document verification, and celebration planning. Write the complete plugin.json configuration file and the SKILL.md for each command with full prompts. Save as transaction-pro-plugin.md.`,
+why:"Plugins turn repetitive multi-step workflows into one-command operations. This plugin transforms Cowork into a transaction management system.",
+tip:"Install this plugin and you'll use /deal-status every single morning — it becomes your transaction dashboard."},
+
+{id:42,title:"The Listing Launch Skill Builder",category:"Plugins & Custom Skills",difficulty:"Advanced",close:"Load",
+prompt:`Create a Cowork skill called 'listing-launch' that automates the entire listing launch workflow. When invoked, it should: (1) Ask for the property address, price, key features, and photo folder location, (2) Generate: MLS description (250 words), property flyer content, social media post package (Instagram, Facebook, LinkedIn), email blast to buyer agents, email blast to my database, neighborhood door-knocker script, (3) Save all files to a new listing folder with organized subfolders: /marketing, /social, /email, /print, (4) Generate a 'Launch Day Checklist' with timestamps: when to post each piece of content for maximum exposure, (5) Create a follow-up sequence: Day 3, Day 7, Day 14 social posts to keep the listing in feeds. Write the complete SKILL.md file with all prompts, folder structure, and execution instructions. Save as listing-launch-skill.md.`,
+why:"The first 7 days of a listing determine its trajectory. This skill ensures every listing gets a full marketing blitz — not just the ones where you have time.",
+tip:"Pair this with the Open House Marketing Blitz prompt for a complete launch-to-open-house pipeline."},
+
+{id:43,title:"The Market Research Skill Builder",category:"Plugins & Custom Skills",difficulty:"Intermediate",close:"Capture",
+prompt:`Create a Cowork skill called 'market-intel' that generates comprehensive market research reports on demand. The skill should: (1) Accept a zip code or neighborhood name as input, (2) Use Claude in Chrome to pull current data from [REALTOR.COM], [ZILLOW], and [LOCAL MLS PUBLIC PORTAL], (3) Generate a standardized market report with: active listings count, median price, average DOM, price per sqft, list-to-sale ratio, months of inventory, year-over-year trends, (4) Include a 'Market Narrative' section translating data to plain English, (5) Format as a brandable one-page PDF-ready document with my name and brokerage, (6) Save to a /market-reports folder with date-stamped filename. Write the complete SKILL.md file with all instructions, formatting requirements, and data source priorities. Save as market-intel-skill.md.`,
+why:"Real estate agents who share market data consistently win more listings. This skill generates a professional, branded market report in under 2 minutes.",
+tip:"Schedule this skill to run on the 1st of every month for your top 5 farm zip codes — instant authority content."},
+
+{id:44,title:"The CRM Integration Connector Template",category:"Plugins & Custom Skills",difficulty:"Advanced",close:"Load",
+prompt:`Create a Cowork connector workflow template that bridges my real estate CRM with Cowork's capabilities. My CRM: [FOLLOW UP BOSS / KVCORE / SIERRA / HUBSPOT / OTHER]. Design a workflow that: (1) Exports my lead list from the CRM as a CSV to a shared folder, (2) Cowork reads the CSV and categorizes leads by temperature (hot/warm/cold) based on last contact date and activity level, (3) Generates personalized follow-up messages for each category: hot leads get a personal check-in, warm leads get a market update + soft CTA, cold leads get a re-engagement message, (4) Creates a daily priority contact list: 'Call these 5 people today' with talking points for each, (5) Drafts email templates for each lead ready to send via Gmail connector. Write the complete workflow instructions, scheduled task configuration, and folder structure. Include a 'How to Export from [CRM]' guide for each major CRM. Save as crm-connector-template.md.`,
+why:"Most agents have a CRM full of leads they never follow up with. This connector turns your neglected database into a daily action plan.",
+tip:"Set this up as a Monday morning Dispatch task — start every week with a prioritized contact list and pre-written messages."},
+
+{id:45,title:"The Voice and Brand Profile Skill",category:"Plugins & Custom Skills",difficulty:"Beginner",close:"Load",
+prompt:`Help me create a Cowork voice and brand profile skill that ensures all AI-generated content matches my personal brand. Interview me with these questions (I'll fill in the answers): (1) How would your best client describe your personality in 3 words? [ANSWER], (2) What phrases do you say ALL the time? [ANSWER], (3) What phrases would you NEVER say? [ANSWER], (4) Are you formal or casual in client communications? [ANSWER], (5) Do you use humor? What kind? [ANSWER], (6) What's your unique selling proposition in one sentence? [ANSWER], (7) What values drive your business? [ANSWER], (8) Who is your ideal client? [ANSWER], (9) What's your brand color palette and visual style? [ANSWER]. Now generate a complete SKILL.md voice profile that Cowork can reference every time it creates content for me. Include writing samples in my voice for: email, social media, listing descriptions, and client conversations. Save as my-voice-profile-skill.md.`,
+why:"A voice profile skill means every piece of content Cowork creates sounds like YOU — not generic AI. This is the difference between useful AI and truly personalized AI.",
+tip:"Install this as a global skill so it applies to everything Cowork writes for you — not just specific prompts."},
+
+// ---- CATEGORY 8: SCHEDULING & DISPATCH (5) ----
+{id:46,title:"The Morning Briefing Automated Report",category:"Scheduling & Dispatch",difficulty:"Intermediate",close:"Extract",
+prompt:`Set up a daily morning briefing that runs automatically at [7:00 AM] every weekday. The briefing should scan my active transaction folders and generate: (1) 'Today's Deadlines' — any contract deadlines, showing dates, or appointments due today or tomorrow, (2) 'Deal Dashboard' — one-line status of each active transaction (property address, days to close, next action), (3) 'Follow-Up Queue' — clients, leads, or agents I need to contact today based on my follow-up schedule, (4) 'Market Alert' — any significant market news or rate changes (use Claude in Chrome to check [MORTGAGE NEWS DAILY URL]), (5) 'Content Calendar' — what social media post is scheduled for today per my content calendar, (6) 'Motivation' — a brief market insight or goal reminder. Format as a clean, scannable briefing I can read on my phone with my coffee. Save to /daily-briefings/[DATE]-morning-brief.md. Set up the scheduled task configuration for Cowork Dispatch.`,
+why:"A daily briefing transforms your morning from reactive chaos to proactive strategy. You know exactly what needs attention before you open your inbox.",
+tip:"Connect this to your Gmail and have the briefing emailed to you — or add it to your Google Drive so it syncs to your phone."},
+
+{id:47,title:"The Weekly Content Publisher",category:"Scheduling & Dispatch",difficulty:"Advanced",close:"Extract",
+prompt:`Create a Cowork Dispatch scheduled task that runs every [MONDAY] at [8:00 AM] and automates my weekly content workflow. The task should: (1) Review my content calendar file at [CONTENT-CALENDAR-PATH] and identify this week's planned content, (2) Generate drafts for: 2 LinkedIn posts, 3 Instagram captions, 1 email newsletter section, and 1 blog post outline, (3) Save all drafts to /weekly-content/[WEEK-DATE]/ folder organized by platform, (4) Create a 'This Week's Content' summary email draft via Gmail connector that lists everything created with direct links to each file, (5) Include a 'Quick Edit Checklist' — 3 things for me to personalize in each piece before posting. Write the complete scheduled task configuration, folder structure, and all prompt templates that the task will execute. Save as weekly-content-publisher.md.`,
+why:"Consistent content marketing is the #1 thing agents know they should do but don't. This Dispatch task removes the 'I'll do it when I have time' excuse by generating everything automatically.",
+tip:"Spend 30 minutes every Monday morning reviewing and personalizing the AI drafts — that's 10x less time than creating from scratch."},
+
+{id:48,title:"The Lead Response Speed System",category:"Scheduling & Dispatch",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Design a lead response system using Cowork that ensures every new lead gets a personalized response within 5 minutes. The system should: (1) Monitor my lead intake folder for new lead notification emails (forwarded from my CRM), (2) Read the lead details (name, source, property of interest, contact info), (3) Generate a personalized first-touch response based on the lead source: [ZILLOW] leads get a property-specific response, [REALTOR.COM] leads get a market-expertise response, [WEBSITE] leads get a personal-brand response, [REFERRAL] leads get a warm-introduction response, (4) Draft the response email via Gmail connector, ready for my one-click send, (5) Create a lead profile note with suggested follow-up topics and timeline, (6) Add the lead to my follow-up queue in /leads/active/[LEAD-NAME].md. Write the complete system design, all response templates, and the Dispatch configuration. Save as lead-response-system.md.`,
+why:"Lead response time is the #1 factor in conversion. The agent who responds in 5 minutes wins the client — this system makes sub-5-minute responses automatic.",
+tip:"Even with AI-drafted responses, add one personal sentence before sending — a comment about their property search or a local reference makes it feel human."},
+
+{id:49,title:"The Monthly Business Review Generator",category:"Scheduling & Dispatch",difficulty:"Intermediate",close:"Extract",
+prompt:`Create a Cowork Dispatch task that runs on the 1st of every month and generates my Monthly Business Review. The task should: (1) Scan my transaction folders from the previous month and calculate: closed transactions, total volume, average sale price, average days on market, list-to-sale ratio, (2) Count my marketing output: blog posts, social posts, emails sent, open house events, (3) Generate a month-over-month comparison with the previous period, (4) Calculate my GCI (Gross Commission Income) for the month based on [MY COMMISSION RATE], (5) Track progress toward my annual goal of [ANNUAL GOAL — e.g., '$X in volume,' 'Y transactions,' '$Z in GCI'], (6) Generate 3 action items for the coming month based on what's working and what isn't, (7) Create a visual-ready summary with key metrics highlighted. Save to /business-reviews/[MONTH]-[YEAR]-review.md. Include goal-tracking persistence so each month builds on the last. Save as monthly-review-dispatch.md.`,
+why:"Most agents don't track their own numbers. This automated monthly review creates accountability and reveals patterns — like which marketing channels are actually driving deals.",
+tip:"Print this and bring it to your broker meeting or coaching session — it shows you're running a business, not just working deals."},
+
+{id:50,title:"The Client Anniversary and Check-In Automator",category:"Scheduling & Dispatch",difficulty:"Beginner",close:"Extract",
+prompt:`Create a Cowork Dispatch system that manages my client relationship calendar. Set up: (1) A 'Client Database' file in /clients/client-database.md where I log each closed client with: name, property address, closing date, email, transaction type, personal notes (kids' names, pets, hobbies), (2) Automatic triggers at: 30 days post-close (settling-in check-in), 6 months (home maintenance reminder), 1-year anniversary (home-iversary greeting + market update on their home's value), annual thereafter (yearly home valuation + personal note), (3) For each trigger, generate a personalized email that references their specific property, transaction details, and personal notes, (4) Include a current estimated value range for their home based on market data, (5) Every email ends with a gentle: 'Know anyone thinking about buying or selling?' Set up the Dispatch configuration, email templates, and the database file structure. Save as client-anniversary-system.md.`,
+why:"Past client referrals are the highest-quality, lowest-cost leads in real estate. This system ensures no client ever feels forgotten — because the follow-up is automated and personalized.",
+tip:"Spend 2 hours loading your last 3 years of clients into the database — the ROI on those 2 hours will be measured in referrals for years."},
+
+// ---- CATEGORY 9: COMPLIANCE & ETHICS (5) ----
+{id:51,title:"The Fair Housing Compliance Reviewer",category:"Compliance & Ethics",difficulty:"Intermediate",close:"Steer",
+prompt:`Review the following marketing material for Fair Housing compliance: [PASTE THE TEXT OR REFERENCE THE FILE IN THIS FOLDER]. Check for: (1) Any language that could be interpreted as discriminatory based on the 7 protected classes (race, color, religion, national origin, sex, familial status, disability) plus any additional classes protected in [STATE], (2) Descriptions that inadvertently steer buyers toward or away from certain neighborhoods based on demographic characteristics, (3) Photos or visual descriptions that suggest a preference for certain types of occupants, (4) Terms like 'master bedroom' that some MLS systems have flagged (note: provide the current industry standard, not just a blanket ban), (5) Language about schools, churches, or community features that could be seen as coded preference. Generate: a clean/flagged assessment, specific problematic phrases with suggested replacements, and a revised version of the text that maintains the marketing appeal while being fully compliant. Save as fair-housing-review-[FILENAME].md.`,
+why:"Fair Housing violations carry fines up to $100K+ and can end careers. This prompt catches issues that even experienced agents miss — especially in creative listing descriptions.",
+tip:"Run EVERY listing description through this prompt before publishing — make it part of your standard listing workflow."},
+
+{id:52,title:"The Disclosure Document Preparer",category:"Compliance & Ethics",difficulty:"Advanced",close:"Orchestrate",
+prompt:`Help me prepare disclosure documentation for [PROPERTY ADDRESS] in [STATE]. The property has the following known conditions: [LIST ALL KNOWN ISSUES — e.g., 'previous water damage in basement repaired in 2021,' 'HVAC system is 18 years old,' 'fence encroaches on neighbor's property by 2 feet,' 'lead paint — home built in [YEAR BEFORE 1978]']. Generate: (1) A disclosure statement narrative that accurately describes each known condition in specific, factual language — no minimizing, no editorializing, (2) Recommended additional disclosures based on [STATE] requirements that sellers commonly forget, (3) A 'What to disclose vs. what's not required' guide for this specific state — with clear warnings about when in doubt, disclose, (4) Lead-based paint disclosure language if the home was built before 1978, (5) An email to my seller explaining WHY thorough disclosure protects them legally (reducing future liability), (6) A disclaimer: 'This is not legal advice — consult a real estate attorney for property-specific legal guidance.' Save as disclosures-[ADDRESS].md.`,
+why:"Disclosure is the #1 source of post-closing lawsuits. This prompt helps you be thorough and factual — protecting both your client and yourself.",
+tip:"Always have your seller review and sign the actual disclosure form — this AI-generated document is your preparation tool, not the legal document itself."},
+
+{id:53,title:"The Wire Fraud Prevention Checklist",category:"Compliance & Ethics",difficulty:"Beginner",close:"Steer",
+prompt:`Generate a comprehensive wire fraud prevention package for the transaction at [PROPERTY ADDRESS]. Buyer: [BUYER NAME]. Closing date: [DATE]. Title company: [COMPANY NAME]. Generate: (1) A 'Wire Fraud Alert' email for my client that explains: what wire fraud is, how real estate transactions are targeted, red flags to watch for (last-minute changes to wiring instructions, email-only communication, urgency pressure), and a CLEAR process for verifying wiring instructions (call the title company at a number you looked up independently, NEVER wire based on email alone), (2) A pre-closing checklist with wire fraud prevention steps at each stage, (3) The exact verification protocol: who to call, what to verify, when to pause and double-check, (4) A list of phrases that should trigger immediate suspicion (e.g., 'updated wiring instructions,' 'new account for this transaction'), (5) What to do if they suspect fraud (who to call, in what order, within what timeframe). Include FBI wire fraud statistics to underscore the seriousness. Save as wire-fraud-prevention-[ADDRESS].md.`,
+why:"Wire fraud costs real estate consumers over $400 million annually. Sending this alert to every client demonstrates you're a fiduciary who takes their protection seriously.",
+tip:"Make this a STANDARD part of every transaction — send it immediately after contract acceptance. It takes zero effort with Cowork and could save your client's life savings."},
+
+{id:54,title:"The Agency Relationship Explainer",category:"Compliance & Ethics",difficulty:"Intermediate",close:"Orchestrate",
+prompt:`Create a comprehensive agency relationship explanation document for my [BUYER/SELLER] clients in [STATE]. My brokerage practices [DESCRIBE — e.g., 'exclusive buyer agency,' 'traditional dual agency when disclosed,' 'designated agency']. Generate: (1) A plain-English explanation of agency relationships in [STATE]: what is a buyer's agent, seller's agent, dual agent, and transaction broker (or whatever your state calls them), (2) What fiduciary duties I owe them: loyalty, confidentiality, disclosure, obedience, accounting, reasonable care — explained without legalese, (3) What I am NOT allowed to do as their agent (so they don't ask me to do something that violates my duties), (4) How the new NAR settlement rules affect our relationship (current as of [DATE] — note any post-settlement changes), (5) A comparison table: what changes if they're represented vs. unrepresented, (6) FAQ: the 5 questions clients ask most about agency relationships, with clear answers. Write this in a warm, approachable tone — not a legal document. Include the mandatory disclaimer: 'This is an educational overview and does not constitute legal advice.' Save as agency-explanation-[STATE].md.`,
+why:"The NAR settlement made agency relationships confusing for consumers. An agent who can explain it clearly and confidently wins trust immediately.",
+tip:"Print this and include it in your buyer and seller consultation packets — it positions you as transparent and professional."},
+
+{id:55,title:"The Annual License Compliance Organizer",category:"Compliance & Ethics",difficulty:"Beginner",close:"Capture",
+prompt:`Create my annual real estate license compliance tracker for [YEAR]. My state: [STATE]. My license type: [SALESPERSON/BROKER]. License number: [NUMBER]. Expiration date: [DATE]. Generate: (1) A complete CE (Continuing Education) requirements list for [STATE] — total hours required, mandatory topics, elective topics, deadline for completion, (2) A tracker template with: course name, provider, hours, completion date, certificate location — formatted as a checklist, (3) Key compliance dates for [YEAR]: license renewal deadline, E&O insurance renewal, association dues, MLS fees, REALTOR membership renewal, (4) A document storage checklist: where to keep copies of my license, E&O policy, CE certificates, and association membership cards, (5) Recommended CE courses that are actually useful (not just checkbox courses) — topics that improve skills while meeting requirements, (6) An email template to my broker confirming my compliance status. Include a 90-day, 60-day, and 30-day reminder schedule for upcoming deadlines. Save as license-compliance-[YEAR].md.`,
+why:"License compliance is boring but critical — letting it lapse means you can't practice. This tracker ensures you never miss a deadline.",
+tip:"Set up a Cowork scheduled task to send you compliance reminders at 90, 60, and 30 days before each deadline."}
+];
+
+// ============================================================
+// CATEGORIES
+// ============================================================
+const CATEGORIES = [...new Set(PROMPTS.map(p=>p.category))];
+
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ============================================================
+// PROMPT LIBRARY — RENDER & FILTER
+// ============================================================
+let activeCats=new Set();
+let activeDiffs=new Set();
+let activeCloses=new Set();
+
+function renderCategoryChips(){
+  const c=document.getElementById('categoryFilters');
+  c.innerHTML=CATEGORIES.map(cat=>`<span class="chip" data-cat="${cat}" onclick="toggleCat(this)">${cat}</span>`).join('');
+}
+
+function toggleCat(el){el.classList.toggle('active');el.classList.contains('active')?activeCats.add(el.dataset.cat):activeCats.delete(el.dataset.cat);filterPrompts();}
+function toggleDiff(el){el.classList.toggle('active');el.classList.contains('active')?activeDiffs.add(el.dataset.diff):activeDiffs.delete(el.dataset.diff);filterPrompts();}
+function toggleClose(el){el.classList.toggle('active');el.classList.contains('active')?activeCloses.add(el.dataset.close):activeCloses.delete(el.dataset.close);filterPrompts();}
+
+function highlightBrackets(text){
+  return text.replace(/\[([^\]]+)\]/g,'<span class="bracket">[$1]</span>');
+}
+
+function renderPrompts(list){
+  const grid=document.getElementById('promptGrid');
+  grid.innerHTML=list.map(p=>{
+    const diffClass=p.difficulty.toLowerCase();
+    const closeClass=p.close.toLowerCase();
+    return `<div class="prompt-card" data-id="${p.id}" onclick="toggleCard(this)">
+      <div class="prompt-card-header">
+        <div class="prompt-card-left">
+          <div class="prompt-number">${p.id}</div>
+          <div class="prompt-title">${p.title}</div>
+        </div>
+        <div class="prompt-tags">
+          <span class="tag tag-category">${p.category}</span>
+          <span class="tag tag-${diffClass}">${p.difficulty}</span>
+          <span class="tag tag-${closeClass}">${p.close}</span>
+        </div>
+        <span class="expand-icon">&#9660;</span>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-body-inner">
+          <div class="prompt-text-block" id="pt-${p.id}">${highlightBrackets(p.prompt)}<button class="copy-btn" onclick="event.stopPropagation();copyPrompt(${p.id},this)">&#128203; Copy</button></div>
+          <div class="why-block"><strong>Why This Works</strong>${p.why}</div>
+          <div class="tip-block"><strong>Pro Tip</strong>${p.tip}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('promptCount').textContent=`Showing ${list.length} of ${PROMPTS.length} prompts`;
+}
+
+function toggleCard(card){card.classList.toggle('expanded');}
+
+function copyPrompt(id,btn){
+  const p=PROMPTS.find(x=>x.id===id);
+  navigator.clipboard.writeText(p.prompt).then(()=>{
+    btn.innerHTML='&#10003; Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML='&#128203; Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+function filterPrompts(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  let filtered=PROMPTS.filter(p=>{
+    if(q && !p.title.toLowerCase().includes(q) && !p.prompt.toLowerCase().includes(q) && !p.category.toLowerCase().includes(q)) return false;
+    if(activeCats.size && !activeCats.has(p.category)) return false;
+    if(activeDiffs.size && !activeDiffs.has(p.difficulty)) return false;
+    if(activeCloses.size && !activeCloses.has(p.close)) return false;
+    return true;
+  });
+  renderPrompts(filtered);
+}
+
+document.getElementById('searchInput').addEventListener('input',filterPrompts);
+
+// ============================================================
+// TAB 2: CLOSE LOOP TOOL
+// ============================================================
+const WORKFLOWS=[
+{title:"Launch a New Listing",icon:"&#127968;",desc:"Complete marketing blitz from pre-listing to live on MLS.",
+c:"Gather property photos, CMA spreadsheet, seller's preferred communication style, and previous listing history if any.",
+l:"Activate the listing-launch skill. Connect Gmail for email blasts. Enable Claude in Chrome for MLS data pulls. Load your voice profile skill.",
+o:"Run Prompt #4 (Open House Marketing Blitz) combined with Prompt #1 (Luxury Listing Description) and Prompt #7 (Listing Presentation Deck Builder). Cowork generates MLS copy, social package, email blasts, and door-knocker scripts.",
+s:"Review listing description for Fair Housing compliance (run Prompt #51). Check that all photos are high-resolution. Verify MLS fields match the description. Proofread all social captions for platform-appropriate length.",
+e:"Deliverables: MLS listing description (.docx), 6-piece social media package, email blast to buyer agents, email to your database, door-knocker script, launch day timeline. All saved to /listings/[ADDRESS]/.",
+prompts:[1,4,7,51]},
+{title:"Prepare for a Listing Appointment",icon:"&#128188;",desc:"Walk in with a professional presentation package that wins the listing.",
+c:"Pull CMA data and save as spreadsheet. Research the neighborhood. Get seller's name, property details, and any known concerns. Review your recent track record stats.",
+l:"Load CMA spreadsheet into folder. Enable Claude in Chrome for market data. Load your voice profile for consistent branding.",
+o:"Run Prompt #6 (CMA Narrator) to analyze comps, then Prompt #7 (Listing Presentation Deck Builder) for the slide deck, then Prompt #39 (Listing Marketing Proposal) for the leave-behind.",
+s:"Ensure CMA narrative matches current market conditions. Verify all comp data is accurate. Review speaker notes for natural delivery. Check that pricing recommendation is defensible.",
+e:"Deliverables: Narrative CMA report, 15-slide presentation with speaker notes, marketing proposal document, and a pre-appointment email template to send the seller. All in /listing-appointments/[SELLER]/.",
+prompts:[6,7,39,2]},
+{title:"Analyze an Investment Property",icon:"&#128200;",desc:"Full financial underwriting and market analysis for investor clients.",
+c:"Gather the rent roll spreadsheet, operating expenses, property details (address, units, type). Save listing sheet/brochure to folder. Note the asking price and any seller-provided financials.",
+l:"Load spreadsheet into Cowork folder. Enable Claude in Chrome for rental market comparisons. Activate the market-intel skill for area data.",
+o:"Run Prompt #10 (Investment Property Underwriter) for financial analysis, then Prompt #13 (Rental Market Analyzer) for rent comps, then Prompt #11 (Zoning Decoder) for land use verification.",
+s:"Double-check NOI calculations against the actual expenses. Verify cap rate against market averages. Ensure rental comps are from the same submarket. Flag any unusual expense ratios.",
+e:"Deliverables: Investment analysis memo with Go/No-Go recommendation, rental market analysis, zoning report, and a comparison matrix if analyzing multiple properties.",
+prompts:[10,13,11,38]},
+{title:"Create This Month's Marketing Content",icon:"&#128221;",desc:"Generate a full month of authority content across all platforms.",
+c:"Review last month's content performance. Identify this month's themes, seasonal angles, and any listings/closings to feature. Note any upcoming events or market shifts.",
+l:"Connect Gmail for newsletter distribution. Load your content calendar. Activate your voice profile skill for brand consistency.",
+o:"Run Prompt #31 (Instagram Calendar) for 30 days of social content, Prompt #28 (LinkedIn Authority Post) for 4 weekly posts, Prompt #26 (Sphere Touchpoint) for the monthly newsletter, and Prompt #30 (Blog Post Builder) for 2 blog articles.",
+s:"Verify all content aligns with your brand voice. Check hashtag relevance. Ensure no duplicate topics across platforms. Review CTAs for consistency.",
+e:"Deliverables: 30-day Instagram calendar, 4 LinkedIn posts, monthly newsletter, 2 blog posts with SEO metadata, and a posting schedule. All in /monthly-content/[MONTH]/.",
+prompts:[31,28,26,30]},
+{title:"Manage a Contract to Closing",icon:"&#128209;",desc:"Stay on top of every deadline and communication from contract to keys.",
+c:"Save the executed contract to your transaction folder. Note all key dates: inspection, appraisal, financing, and closing deadlines. Gather contact info for all parties.",
+l:"Activate the transaction-pro plugin. Connect Gmail for automated communication. Set up the morning briefing Dispatch task for this deal.",
+o:"Run Prompt #15 (Contract-to-Close Checklist) for the master timeline, then Prompt #21 (Transaction Communication Autopilot) for all email templates, then set up Prompt #46 (Morning Briefing) to include this deal.",
+s:"Monitor each deadline as it approaches. Run Prompt #16 (Inspection Translator) after the inspection. If appraisal gaps appear, immediately run Prompt #19. Watch for title issues (Prompt #18).",
+e:"Deliverables: Complete closing checklist, 8 transaction email templates, daily briefing integration, and on-demand tools for inspection, appraisal, and title issues.",
+prompts:[15,21,46,16,19,18]}
+];
+
+function renderWorkflows(){
+  const container=document.getElementById('workflowCards');
+  container.innerHTML=WORKFLOWS.map((w,i)=>`<div class="workflow-card" onclick="this.classList.toggle('expanded')">
+    <h4>${w.icon} ${w.title}</h4>
+    <p>${w.desc}</p>
+    <div class="workflow-detail">
+      <div style="margin-bottom:12px"><strong style="color:var(--purple)">C — Capture:</strong> ${w.c}</div>
+      <div style="margin-bottom:12px"><strong style="color:var(--orange)">L — Load:</strong> ${w.l}</div>
+      <div style="margin-bottom:12px"><strong style="color:var(--teal)">O — Orchestrate:</strong> ${w.o}</div>
+      <div style="margin-bottom:12px"><strong style="color:var(--red)">S — Steer:</strong> ${w.s}</div>
+      <div style="margin-bottom:12px"><strong style="color:var(--green)">E — Extract:</strong> ${w.e}</div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--cream)"><strong>Recommended Prompts:</strong> ${w.prompts.map(pid=>`<a href="#" onclick="event.preventDefault();event.stopPropagation();goToPrompt(${pid})" style="margin-right:8px">#${pid}</a>`).join('')}</div>
+    </div>
+  </div>`).join('');
+}
+
+function goToPrompt(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('[data-tab="library"]').classList.add('active');
+  document.getElementById('panel-library').classList.add('active');
+  setTimeout(()=>{
+    const card=document.querySelector(`.prompt-card[data-id="${id}"]`);
+    if(card){card.classList.add('expanded');card.scrollIntoView({behavior:'smooth',block:'center'});}
+  },100);
+}
+
+function runCloseLoop(){
+  const task=document.getElementById('closeInput').value.trim();
+  if(!task){alert('Please describe a task first.');return;}
+  const stages=document.querySelectorAll('.pipeline-stage');
+  const taskLower=task.toLowerCase();
+  // Simple keyword matching for demo
+  let c,l,o,s,e;
+  if(taskLower.includes('listing')||taskLower.includes('sell')){
+    c="Gather property photos, CMA data, seller info, and neighborhood details into your listing folder.";
+    l="Activate listing-launch skill, voice profile, and Gmail connector. Enable Claude in Chrome for market data.";
+    o="Use Prompt #1 for listing description, #7 for presentation deck, #4 for marketing blitz.";
+    s="Review for Fair Housing compliance. Verify pricing against current comps. Check all platform formats.";
+    e="MLS description, presentation deck, social media package, email campaigns — all saved to listing folder.";
+  } else if(taskLower.includes('buyer')||taskLower.includes('buy')||taskLower.includes('purchase')){
+    c="Collect buyer preferences, budget, pre-approval status, and target neighborhoods.";
+    l="Enable Claude in Chrome for property searches. Connect Gmail for communication. Load school district data.";
+    o="Run Prompt #22 for buyer consultation prep, #12 for school data, #20 for closing cost estimates.";
+    s="Verify buyer is pre-approved. Confirm search criteria match their needs. Watch for market changes.";
+    e="Buyer consultation package, school reports, closing cost worksheet, and personalized search criteria.";
+  } else if(taskLower.includes('invest')||taskLower.includes('rental')||taskLower.includes('cap rate')){
+    c="Gather rent rolls, operating expenses, property details, and comparable sales data.";
+    l="Load spreadsheets to folder. Enable Claude in Chrome for rental and sales comps. Activate market-intel skill.";
+    o="Run Prompt #10 for underwriting, #13 for rental analysis, #11 for zoning research.";
+    s="Verify all financial calculations. Cross-check rent comps. Confirm zoning permits intended use.";
+    e="Investment memo with Go/No-Go recommendation, rental analysis, zoning report, and comparison matrix.";
+  } else if(taskLower.includes('market')||taskLower.includes('content')||taskLower.includes('social')){
+    c="Review performance data from last period. Identify themes, listings to feature, and seasonal angles.";
+    l="Connect Gmail, load content calendar, activate voice profile skill for brand consistency.";
+    o="Run Prompt #31 for Instagram calendar, #28 for LinkedIn, #26 for newsletter, #30 for blog posts.";
+    s="Check brand voice consistency. Verify hashtag relevance. Ensure no duplicate topics across platforms.";
+    e="30-day content calendar, weekly LinkedIn posts, monthly newsletter, blog posts with SEO metadata.";
+  } else {
+    c="Identify all files, data, and context needed for this task. Organize into a dedicated Cowork folder.";
+    l="Determine which plugins, skills, and connectors apply. Enable Claude in Chrome if web research is needed.";
+    o="Select the most relevant prompt from the library and customize the [BRACKETED VARIABLES] for your situation.";
+    s="Review output for accuracy, compliance, and brand voice. Make adjustments as needed.";
+    e="Save all deliverables to organized folders. Set up follow-up tasks or scheduled automations.";
+  }
+  document.getElementById('stage-c-text').textContent=c;
+  document.getElementById('stage-l-text').textContent=l;
+  document.getElementById('stage-o-text').textContent=o;
+  document.getElementById('stage-s-text').textContent=s;
+  document.getElementById('stage-e-text').textContent=e;
+  stages.forEach(s=>s.classList.add('active'));
+}
+
+// ============================================================
+// TAB 3: 90-DAY PLANNER
+// ============================================================
+function generatePlan(){
+  const specialty=document.getElementById('planSpecialty').value;
+  const experience=document.getElementById('planExperience').value;
+  const team=document.getElementById('planTeam').value;
+  const priority=document.getElementById('planPriority').value;
+  const hours=document.getElementById('planHours').value;
+
+  const plans={
+    phase1:{title:"Phase 1: Foundation",weeks:"Weeks 1-2",tasks:[
+      "Download Claude Desktop and activate Cowork mode",
+      "Grant folder access to your main real estate working directory",
+      `Set up a ${specialty.toLowerCase()} folder structure: /listings, /transactions, /marketing, /clients`,
+      "Create your voice and brand profile (Prompt #45)",
+      "Run your first prompt: Listing Description Generator (#1) on a current or recent listing",
+      experience==="New to AI"?"Complete the Claude tutorial and experiment with 5 beginner prompts":"Review all 55 prompts and bookmark your top 10 for immediate use",
+      "Set up Gmail and Google Drive connectors",
+      priority==="Lead Generation"?"Run the Past Client Re-Engagement Campaign (#27)":priority==="Transaction Efficiency"?"Set up the Contract-to-Close Checklist Engine (#15)":priority==="Marketing Presence"?"Generate your first LinkedIn Authority Post (#28)":priority==="Client Communication"?"Create your first Weekly Seller Update (#23)":"Run the Hyper-Local Market Pulse Report (#9)"
+    ]},
+    phase2:{title:"Phase 2: Core Adoption",weeks:"Weeks 3-6",tasks:[
+      `Master 3 core prompts for ${specialty.toLowerCase()} workflows — run each at least 3 times`,
+      specialty==="Residential"?"Generate CMAs with Prompt #6 for your next 3 listing appointments":specialty==="Commercial"?"Underwrite 3 investment properties with Prompt #10":specialty==="Land & Ranch"?"Run zoning research (#11) on 3 active parcels":specialty==="Luxury"?"Create neighborhood guides (#2) for your top 3 luxury markets":"Build rental analyses (#13) for 3 active investment targets",
+      "Create your first content batch: Instagram calendar (#31) + 4 LinkedIn posts (#28)",
+      "Set up the Morning Briefing (#46) as a daily scheduled task",
+      team!=="Solo agent"?"Train your team on their first 3 prompts — assign one prompt per team member":"Build a personal workflow checklist: which prompt for each daily/weekly task",
+      `Dedicate ${hours} hours this week to mastering multi-step workflows`,
+      "Run Fair Housing review (#51) on all active marketing materials",
+      "Build your Objection Handler library (#24) with your 5 most common objections"
+    ]},
+    phase3:{title:"Phase 3: Advanced Integration",weeks:"Weeks 7-10",tasks:[
+      "Install the Transaction Management Plugin (#41)",
+      "Build and install the Listing Launch Skill (#42)",
+      "Set up the Weekly Content Publisher (#47) as a Dispatch task",
+      "Create the Lead Response Speed System (#48)",
+      specialty==="Investment"?"Build a property comparison workflow: underwriting + rental analysis + zoning in one session":"Create a full listing launch workflow: CMA + presentation + marketing blitz in one session",
+      "Set up the Monthly Business Review (#49) as a recurring task",
+      "Build the Client Anniversary System (#50) and load your past 3 years of clients",
+      team==="6-15 people"||team==="16+ people"?"Create team-specific prompt assignments and run a training workshop":"Optimize your personal prompt library — customize the top 10 prompts with your default variables"
+    ]},
+    phase4:{title:"Phase 4: Mastery",weeks:"Weeks 11-12",tasks:[
+      "Run your first Monthly Business Review and analyze ROI",
+      "Audit all systems: Are Dispatch tasks running? Is content publishing? Are leads getting responses?",
+      "Create your own custom skill for your most unique workflow",
+      "Document your complete AI workflow: what runs daily, weekly, monthly, and per-transaction",
+      team!=="Solo agent"?"Host a team AI mastery session — share wins, troubleshoot issues, assign advanced prompts":"Share your AI workflow with your broker or accountability partner",
+      "Run the SEO Content Cluster Generator (#35) for your primary market keyword",
+      "Set up the 12-Month Email Newsletter Plan (#32) for the full year",
+      "Celebrate: You're now a Cowork-Certified Real Estate Professional"
+    ]}
+  };
+
+  const output=document.getElementById('planOutput');
+  let totalTasks=0;
+  Object.values(plans).forEach(p=>totalTasks+=p.tasks.length);
+
+  output.innerHTML=`
+    <div style="margin-bottom:16px"><strong>Your Plan:</strong> ${specialty} | ${experience} | ${team} | Focus: ${priority} | ${hours} hrs/week</div>
+    <div class="progress-bar-container"><div class="progress-bar" id="planProgress"></div></div>
+    <div style="font-size:13px;color:#888;margin-bottom:20px" id="progressText">0 of ${totalTasks} tasks completed</div>
+    ${Object.values(plans).map(phase=>`
+      <div class="phase-card">
+        <h3>${phase.title}</h3>
+        <div class="phase-weeks">${phase.weeks}</div>
+        ${phase.tasks.map((task,i)=>`<div class="phase-task"><input type="checkbox" onchange="updateProgress()" id="task-${phase.title}-${i}"><label for="task-${phase.title}-${i}">${task}</label></div>`).join('')}
+      </div>
+    `).join('')}
+    <button class="generate-plan-btn" style="margin-top:16px;background:var(--gold)" onclick="downloadPlan()">&#128196; Download My Plan</button>
+  `;
+}
+
+function updateProgress(){
+  const checks=document.querySelectorAll('#planOutput input[type="checkbox"]');
+  const checked=[...checks].filter(c=>c.checked).length;
+  const pct=Math.round((checked/checks.length)*100);
+  document.getElementById('planProgress').style.width=pct+'%';
+  document.getElementById('progressText').textContent=`${checked} of ${checks.length} tasks completed (${pct}%)`;
+}
+
+function downloadPlan(){
+  const text=document.getElementById('planOutput').innerText;
+  const blob=new Blob([text],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='cowork-90-day-plan.txt';
+  a.click();
+}
+
+// ============================================================
+// TAB 4: PLUGINS & SKILLS
+// ============================================================
+const PLUGINS=[
+{title:"Transaction Management Plugin",desc:"5 slash commands for managing real estate transactions end-to-end.",
+code:`{
+  "name": "transaction-pro",
+  "version": "1.0.0",
+  "description": "Real estate transaction management plugin for Cowork",
+  "commands": [
+    {
+      "name": "/new-deal",
+      "description": "Create a new transaction with folder structure and checklist",
+      "arguments": ["address", "price", "closing_date", "buyer", "seller"]
+    },
+    {
+      "name": "/deal-status",
+      "description": "Scan active deal folder and generate status summary",
+      "arguments": ["deal_folder"]
+    },
+    {
+      "name": "/client-update",
+      "description": "Generate weekly client update email from deal status",
+      "arguments": ["deal_folder", "client_type"]
+    },
+    {
+      "name": "/deadline-alert",
+      "description": "Calculate and display all upcoming contract deadlines",
+      "arguments": ["deal_folder"]
+    },
+    {
+      "name": "/close-prep",
+      "description": "Generate final 10-day closing preparation checklist",
+      "arguments": ["deal_folder"]
+    }
+  ]
+}`},
+{title:"Listing Marketing Skill",desc:"Automates the complete listing launch workflow from photos to social posts.",
+code:`---
+name: listing-launch
+description: Complete listing marketing automation
+trigger: "Launch marketing for a new listing"
+---
+
+## Listing Launch Skill
+
+When invoked, execute this workflow:
+
+1. ASK for: property address, list price, key features (5-7), photo folder path
+2. GENERATE all deliverables:
+   - MLS description (250 words, sensory language, no clichés)
+   - Property flyer content (headline, 5 bullets, call-to-action)
+   - Instagram caption (teaser + day-of + follow-up)
+   - Facebook post with SEO keywords
+   - LinkedIn announcement post
+   - Email blast to buyer agent network
+   - Email blast to personal database
+   - Neighborhood door-knocker script
+3. SAVE to /listings/[ADDRESS]/ with subfolders:
+   /marketing, /social, /email, /print
+4. GENERATE Launch Day Timeline with posting schedule
+5. CREATE Day 3, 7, 14 follow-up social posts`},
+{title:"Investment Analysis Skill",desc:"Full financial underwriting for any investment property from a rent roll spreadsheet.",
+code:`---
+name: investment-analyzer
+description: Investment property financial analysis from spreadsheet data
+trigger: "Analyze an investment property"
+---
+
+## Investment Analysis Skill
+
+1. READ rent roll and expenses from [FILENAME.xlsx] in current folder
+2. CALCULATE:
+   - Gross Scheduled Income (GSI)
+   - Effective Gross Income (EGI) at stated vacancy rate
+   - Net Operating Income (NOI)
+   - Cap Rate at asking price
+   - Cash-on-Cash Return (with financing inputs)
+   - Debt Service Coverage Ratio (DSCR)
+   - 5-Year projection with growth assumptions
+3. GENERATE Go/No-Go recommendation with reasoning
+4. FORMAT as professional investment memo
+5. SAVE as [ADDRESS]-investment-analysis.docx
+
+Required inputs: Property address, asking price, down payment %,
+interest rate, loan term, vacancy rate assumption,
+annual rent growth %, annual expense growth %`},
+{title:"Fair Housing Compliance Skill",desc:"Automated compliance review for all marketing materials before publishing.",
+code:`---
+name: fair-housing-check
+description: Review any marketing text for Fair Housing compliance
+trigger: "Check this for Fair Housing compliance"
+---
+
+## Fair Housing Compliance Review Skill
+
+1. READ the marketing material (from clipboard, file, or pasted text)
+2. CHECK against all 7 federal protected classes:
+   Race, Color, Religion, National Origin, Sex,
+   Familial Status, Disability
+3. CHECK against state-specific protected classes for [STATE]
+4. FLAG any problematic language:
+   - Discriminatory terms (even subtle ones)
+   - Steering language (neighborhood demographics)
+   - Exclusionary descriptions (age-restricted language for non-55+ communities)
+   - Photo/visual bias indicators
+5. GENERATE:
+   - Clean/Flagged assessment
+   - Specific flagged phrases with replacements
+   - Revised compliant version
+   - Confidence rating (Low Risk / Needs Review / High Risk)
+6. SAVE review as fair-housing-review-[DATE].md`},
+{title:"Agent Voice Profile Template",desc:"Ensures all AI-generated content matches your personal brand voice.",
+code:`---
+name: my-voice-profile
+description: Personal brand voice and writing style profile
+scope: global
+---
+
+## Voice Profile for [YOUR NAME]
+
+### Personality
+- Three words clients use to describe me: [WORD1], [WORD2], [WORD3]
+- Communication style: [formal/casual/mix]
+- Humor: [yes/no] — type: [self-deprecating/observational/none]
+
+### Language Rules
+ALWAYS use: [list phrases you say often]
+NEVER use: [list phrases that don't sound like you]
+Signature sign-off: [your email closing]
+
+### Tone by Channel
+- Email: [professional but warm / casual / formal]
+- Social media: [conversational / authoritative / playful]
+- Listing descriptions: [luxury / approachable / data-driven]
+- Client conversations: [consultative / direct / empathetic]
+
+### Writing Samples
+[Include 1 example of each: email, social post, listing description]
+
+### Brand Elements
+- Tagline: [YOUR TAGLINE]
+- Colors: [YOUR BRAND COLORS]
+- USP: [YOUR UNIQUE SELLING PROPOSITION]`},
+{title:"Brand Style Guide Skill",desc:"Maintains consistent branding across all generated content and documents.",
+code:`---
+name: brand-style-guide
+description: Brand consistency rules for all content generation
+scope: global
+---
+
+## Brand Style Guide for [YOUR NAME / TEAM NAME]
+
+### Visual Identity
+- Primary color: [HEX]
+- Secondary color: [HEX]
+- Accent color: [HEX]
+- Font: [FONT NAME]
+- Logo usage: Always include on first page of documents
+
+### Content Standards
+- Always include: brokerage name, license number on marketing
+- Always include: Equal Housing Opportunity logo
+- Photo style: [bright and airy / moody and dramatic / clean and minimal]
+- Document format: [YOUR STANDARD TEMPLATE DESCRIPTION]
+
+### Social Media Standards
+- Handle: [@HANDLE]
+- Hashtag sets: [YOUR STANDARD HASHTAGS]
+- Posting voice: [REFERENCE VOICE PROFILE]
+- Content ratio: 60% value / 30% social proof / 10% direct CTA
+
+### Compliance Requirements
+- Fair Housing statement on all marketing
+- Brokerage disclosure per state requirements
+- MLS attribution where required`},
+{title:"Morning Briefing Scheduled Task",desc:"Daily automated briefing delivered to your folder every weekday at 7 AM.",
+code:`---
+name: morning-briefing
+type: scheduled-task
+schedule: "0 7 * * 1-5"
+description: Daily morning briefing for real estate agent
+---
+
+## Morning Briefing — Scheduled Task Config
+
+### Schedule
+Runs: Every weekday at 7:00 AM
+
+### Task Instructions
+1. SCAN /transactions/ for all active deal folders
+2. IDENTIFY deadlines due today or tomorrow
+3. GENERATE briefing sections:
+
+   TODAY'S DEADLINES
+   - List any contract deadlines, showings, or appointments
+
+   DEAL DASHBOARD
+   - One line per active deal: address | days to close | next action
+
+   FOLLOW-UP QUEUE
+   - Clients and leads due for contact today
+
+   MARKET ALERT
+   - Check mortgage rates (use Chrome to visit mortgagenewsdaily.com)
+
+   CONTENT CALENDAR
+   - What's scheduled to post today
+
+4. SAVE to /daily-briefings/[YYYY-MM-DD]-morning-brief.md
+5. DRAFT email via Gmail with briefing contents`},
+{title:"Weekly Content Publisher Template",desc:"Automated weekly content generation every Monday morning.",
+code:`---
+name: weekly-content-publisher
+type: scheduled-task
+schedule: "0 8 * * 1"
+description: Generate weekly content batch every Monday
+---
+
+## Weekly Content Publisher — Scheduled Task Config
+
+### Schedule
+Runs: Every Monday at 8:00 AM
+
+### Task Instructions
+1. READ content calendar at /marketing/content-calendar.md
+2. IDENTIFY this week's planned topics and themes
+3. GENERATE:
+   - 2 LinkedIn posts (150-200 words each)
+   - 3 Instagram captions (100-150 words each with hashtags)
+   - 1 email newsletter section (300 words)
+   - 1 blog post outline (with SEO keywords)
+4. APPLY voice profile from my-voice-profile skill
+5. SAVE all drafts to /weekly-content/[YYYY-WW]/
+   Subfolders: /linkedin, /instagram, /email, /blog
+6. GENERATE summary with Quick Edit Checklist
+7. DRAFT email via Gmail: "Your Weekly Content Is Ready"
+   Include links to all generated files`},
+{title:"Deal Folder Structure Template",desc:"Standardized folder organization for every real estate transaction.",
+code:`## Deal Folder Structure Template
+
+When starting a new transaction, create this folder structure:
+
+/transactions/[ADDRESS]/
+├── /contract/
+│   ├── executed-contract.pdf
+│   ├── amendments/
+│   └── addenda/
+├── /inspection/
+│   ├── inspection-report.pdf
+│   ├── repair-request.md
+│   └── photos/
+├── /appraisal/
+│   ├── appraisal-report.pdf
+│   └── rebuttal/ (if needed)
+├── /title/
+│   ├── title-commitment.pdf
+│   ├── survey.pdf
+│   └── title-issues/ (if any)
+├── /closing/
+│   ├── closing-disclosure.pdf
+│   ├── settlement-statement.pdf
+│   └── final-walkthrough-notes.md
+├── /communication/
+│   ├── client-emails/
+│   ├── agent-emails/
+│   └── lender-updates/
+├── /marketing/ (listing side only)
+│   ├── photos/
+│   ├── flyers/
+│   └── social-posts/
+├── closing-checklist.md
+├── deal-summary.md
+└── contacts.md`},
+{title:"Client Onboarding Workflow Template",desc:"Systematic onboarding process for new buyer and seller clients.",
+code:`---
+name: client-onboarding
+description: New client onboarding workflow
+trigger: "Onboard a new client"
+---
+
+## Client Onboarding Workflow
+
+### For New BUYERS:
+1. CREATE client folder: /clients/buyers/[CLIENT-NAME]/
+2. GENERATE pre-consultation questionnaire (10 questions)
+3. SEND welcome email via Gmail connector
+4. GENERATE:
+   - "What to Expect" buyer guide document
+   - School district report for target area
+   - Market snapshot for target price range
+   - Buyer agency agreement talking points
+5. SCHEDULE follow-up task for post-consultation
+6. ADD to client database for anniversary tracking
+
+### For New SELLERS:
+1. CREATE client folder: /clients/sellers/[CLIENT-NAME]/
+2. GENERATE CMA from saved spreadsheet data
+3. SEND welcome email via Gmail connector
+4. GENERATE:
+   - Listing marketing proposal
+   - Listing presentation deck
+   - Disclosure preparation guide
+   - Communication plan with weekly update schedule
+5. SCHEDULE listing launch tasks
+6. ADD to client database for anniversary tracking
+
+### Shared Steps:
+- Set up morning briefing to include new client
+- Create communication log in client folder
+- Generate personalized talking points for first meeting`}
+];
+
+function renderPlugins(){
+  const grid=document.getElementById('pluginGrid');
+  grid.innerHTML=PLUGINS.map((p,i)=>`<div class="plugin-card" onclick="this.classList.toggle('expanded')">
+    <div class="plugin-card-header"><h4>${p.title}</h4><span>&#9660;</span></div>
+    <div class="plugin-body"><div class="plugin-body-inner">
+      <div class="plugin-desc">${p.desc}</div>
+      <div class="code-block" id="plugin-code-${i}">${p.code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}<button class="copy-btn" onclick="event.stopPropagation();copyPlugin(${i},this)">&#128203; Copy</button></div>
+    </div></div>
+  </div>`).join('');
+}
+
+function copyPlugin(i,btn){
+  navigator.clipboard.writeText(PLUGINS[i].code).then(()=>{
+    btn.innerHTML='&#10003; Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML='&#128203; Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+// ============================================================
+// TAB 5: ROI CALCULATOR
+// ============================================================
+function updateROI(){
+  const gci=parseInt(document.getElementById('gciSlider').value);
+  const deals=parseInt(document.getElementById('dealsSlider').value);
+  const mkt=parseInt(document.getElementById('mktSlider').value);
+  const txn=parseInt(document.getElementById('txnSlider').value);
+  const com=parseInt(document.getElementById('comSlider').value);
+  const res=parseInt(document.getElementById('resSlider').value);
+  const cnt=parseInt(document.getElementById('cntSlider').value);
+
+  document.getElementById('gciVal').textContent='$'+gci.toLocaleString();
+  document.getElementById('dealsVal').textContent=deals;
+  document.getElementById('mktVal').textContent=mkt;
+  document.getElementById('txnVal').textContent=txn;
+  document.getElementById('comVal').textContent=com;
+  document.getElementById('resVal').textContent=res;
+  document.getElementById('cntVal').textContent=cnt;
+
+  const totalHours=mkt+txn+com+res+cnt;
+  const savedHours=totalHours*0.65;
+  const remainHours=totalHours-savedHours;
+  const hourlyRate=gci/(52*40);
+  const monthlyValue=savedHours*hourlyRate*4.33;
+  const annualValue=monthlyValue*12;
+  const investment=1200;
+  const netROI=annualValue-investment;
+  const roiMultiple=Math.round(annualValue/investment);
+
+  document.getElementById('roiHoursNow').textContent=totalHours+' hrs';
+  document.getElementById('roiHoursSaved').textContent=savedHours.toFixed(1)+' hrs';
+  document.getElementById('roiHourly').textContent='$'+Math.round(hourlyRate)+'/hr';
+  document.getElementById('roiMonthly').textContent='$'+Math.round(monthlyValue).toLocaleString();
+  document.getElementById('roiAnnual').textContent='$'+Math.round(annualValue).toLocaleString();
+  document.getElementById('roiNet').textContent='$'+Math.round(netROI).toLocaleString();
+  document.getElementById('roiMultiple').textContent=roiMultiple+'x';
+
+  const maxH=160;
+  document.getElementById('barNow').style.height=Math.min(maxH,totalHours*7)+'px';
+  document.getElementById('barCowork').style.height=Math.min(maxH,remainHours*7)+'px';
+  document.getElementById('barNowVal').textContent=totalHours+' hrs';
+  document.getElementById('barCoworkVal').textContent=remainHours.toFixed(1)+' hrs';
+}
+
+// ============================================================
+// TAB 6: QUICK START
+// ============================================================
+const STEPS=[
+{num:1,title:"Choose Your Plan",desc:"Claude Pro ($20/mo) gives you Cowork basics. Claude Max ($100/mo) unlocks extended sessions, more tool uses, and Dispatch scheduling. For serious real estate workflows, Max is worth it.",link:null},
+{num:2,title:"Download Claude Desktop",desc:"Get the Claude desktop app from claude.ai/download. Cowork is a feature of the desktop app — it doesn't work in the browser version.",link:null},
+{num:3,title:"Open Cowork Mode",desc:"In Claude Desktop, look for Cowork mode in the sidebar. It gives Claude access to your files, a shell environment, and the ability to work autonomously on multi-step tasks.",link:null},
+{num:4,title:"Grant Folder Access",desc:"Point Cowork at your main real estate working directory. Recommended starting folder: /Documents/Real-Estate/ with subfolders for /listings, /transactions, /marketing, /clients.",link:null},
+{num:5,title:"Set Global Instructions",desc:"Copy-paste this into your Cowork global instructions: 'I am a real estate professional specializing in [YOUR SPECIALTY] in [YOUR MARKET]. My brokerage is [BROKERAGE]. Always save outputs to organized subfolders. Use professional but approachable language. Include Fair Housing compliance awareness in all marketing content.'",link:null},
+{num:6,title:"Run Your First Task",desc:"Start with Prompt #1: The Luxury Listing Description Generator. Pick a current or recent listing and fill in the [BRACKETED VARIABLES]. You'll have a professional MLS description in under 60 seconds.",link:"prompt-1"},
+{num:7,title:"Install Your First Plugin",desc:"Head to the Plugins & Skills tab and copy the Transaction Management Plugin template. This gives you /new-deal, /deal-status, and more — instant transaction management.",link:"plugins"},
+{num:8,title:"Connect Gmail & Google Drive",desc:"In Cowork settings, connect your Gmail and Google Drive accounts. This lets Cowork draft emails, save files to Drive, and integrate with your existing tools.",link:null},
+{num:9,title:"Set Up Your Morning Briefing",desc:"Use Prompt #46 to configure a daily morning briefing. Once set up with Dispatch, you'll get a personalized briefing every weekday morning — your deals, deadlines, and action items.",link:"prompt-46"},
+{num:10,title:"Join the Community",desc:"Visit realedgelabs.com to connect with other Cowork-powered real estate professionals, get advanced tutorials, and access new prompts as they're released.",link:"https://realedgelabs.com"}
+];
+
+function renderSteps(){
+  const container=document.getElementById('stepsContainer');
+  container.innerHTML=STEPS.map(s=>`<div class="step-card">
+    <div class="step-num">${s.num}</div>
+    <div class="step-content">
+      <h4>${s.title}</h4>
+      <p>${s.desc}</p>
+      ${s.link?s.link.startsWith('http')?`<a class="step-link" href="${s.link}" target="_blank">Learn more &#8594;</a>`:`<a class="step-link" href="#" onclick="event.preventDefault();${s.link.startsWith('prompt')?`goToPrompt(${s.link.split('-')[1]})`:`document.querySelector('[data-tab=\\'plugins\\']').click()`}">Go to ${s.link.startsWith('prompt')?'Prompt #'+s.link.split('-')[1]:'Plugins'} &#8594;</a>`:''}
+    </div>
+  </div>`).join('');
+}
+
+// ============================================================
+// INITIALIZE
+// ============================================================
+renderCategoryChips();
+renderPrompts(PROMPTS);
+renderWorkflows();
+renderPlugins();
+renderSteps();
+updateROI();
+</script>
+</body>
+</html>
